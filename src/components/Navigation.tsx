@@ -1,5 +1,6 @@
 import { Link, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
+import { Code2 } from "lucide-react";
 
 const Navigation = () => {
   const location = useLocation();
@@ -7,45 +8,62 @@ const Navigation = () => {
   const isActive = (path: string) => location.pathname === path;
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-border">
-      <div className="container mx-auto px-6 py-4">
-        <div className="flex items-center justify-between">
-          <Link to="/" className="text-xl font-bold text-foreground hover:text-primary transition-colors">
-            OhYeah Software
+    <nav className="sticky top-0 z-50 w-full bg-background/80 backdrop-blur-md border-b border-border">
+      <div className="max-w-screen-xl mx-auto px-6 md:px-8 lg:px-10">
+        <div className="flex items-center justify-between h-16">
+          <Link 
+            to="/" 
+            className="flex items-center gap-3 group transition-all duration-200 hover:opacity-80"
+          >
+            <div className="w-8 h-8 bg-gradient-primary rounded-lg flex items-center justify-center">
+              <Code2 className="w-5 h-5 text-primary-foreground" />
+            </div>
+            <div className="flex flex-col">
+              <span className="text-lg font-jakarta font-semibold text-foreground leading-tight">
+                OhYeah
+              </span>
+              <span className="text-xs font-inter font-medium text-muted-foreground leading-tight -mt-0.5">
+                SOFTWARE
+              </span>
+            </div>
           </Link>
           
           <div className="hidden md:flex items-center space-x-8">
             <Link 
               to="/" 
-              className={`transition-colors hover:text-primary ${
-                isActive('/') ? 'text-primary font-medium' : 'text-muted-foreground'
+              className={`text-sm font-medium transition-colors duration-200 hover:text-primary ${
+                isActive('/') 
+                  ? 'text-primary' 
+                  : 'text-muted-foreground'
               }`}
             >
               Home
             </Link>
             <Link 
               to="/about" 
-              className={`transition-colors hover:text-primary ${
-                isActive('/about') ? 'text-primary font-medium' : 'text-muted-foreground'
+              className={`text-sm font-medium transition-colors duration-200 hover:text-primary ${
+                isActive('/about') 
+                  ? 'text-primary' 
+                  : 'text-muted-foreground'
               }`}
             >
               About
             </Link>
             <Link 
               to="/contact" 
-              className={`transition-colors hover:text-primary ${
-                isActive('/contact') ? 'text-primary font-medium' : 'text-muted-foreground'
+              className={`text-sm font-medium transition-colors duration-200 hover:text-primary ${
+                isActive('/contact') 
+                  ? 'text-primary' 
+                  : 'text-muted-foreground'
               }`}
             >
               Contact
             </Link>
           </div>
 
-          <div className="flex items-center space-x-4">
-            <Button variant="corporate" size="sm" asChild>
-              <Link to="/contact">Get Started</Link>
-            </Button>
-          </div>
+          <Button variant="default" size="sm" asChild>
+            <Link to="/contact">Get in touch</Link>
+          </Button>
         </div>
       </div>
     </nav>
