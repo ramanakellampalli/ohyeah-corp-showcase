@@ -9,7 +9,7 @@ const Navigation = () => {
 
   return (
     <nav className="sticky top-0 z-50 w-full bg-background/80 backdrop-blur-md border-b border-border">
-      <div className="max-w-screen-xl mx-auto px-4 sm:px-6 md:px-6">
+      <div className="max-w-full mx-auto px-4">
         <div className="flex items-center justify-between h-16">
           {/* Left: Logo and Company Name */}
           <div className="flex items-center">
