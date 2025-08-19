@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Lightbulb, Shield, Zap } from "lucide-react";
+import { ArrowRight, Lightbulb, Shield, Zap, Code2, Database, Cloud, Smartphone, Globe, Cpu, Server, Layers } from "lucide-react";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 
@@ -84,23 +84,45 @@ const Home = () => {
                   {/* Large Background Circle */}
                   <div className="absolute inset-0 bg-gradient-to-br from-primary/30 to-accent/20 rounded-full blur-sm opacity-60" />
                   
-                  {/* Geometric Shapes */}
-                  <div className="absolute top-8 left-8 w-24 h-24 bg-primary/40 rounded-2xl rotate-12 animate-float" />
-                  <div className="absolute top-16 right-12 w-16 h-16 bg-accent/50 rounded-full opacity-80" 
-                       style={{ animationDelay: '1s' }} />
-                  <div className="absolute bottom-20 left-16 w-20 h-20 bg-gradient-to-br from-primary/50 to-transparent rounded-xl rotate-45" 
-                       style={{ animationDelay: '0.5s' }} />
-                  <div className="absolute bottom-12 right-8 w-12 h-24 bg-primary/30 rounded-full opacity-70 rotate-12" 
-                       style={{ animationDelay: '1.5s' }} />
+                  {/* Geometric Shapes with Tech Icons */}
+                  <div className="absolute top-8 left-8 w-24 h-24 bg-primary/20 rounded-2xl rotate-12 animate-float flex items-center justify-center">
+                    <Code2 className="w-12 h-12 text-primary" />
+                  </div>
+                  <div className="absolute top-16 right-12 w-16 h-16 bg-accent/30 rounded-full opacity-80 flex items-center justify-center" 
+                       style={{ animationDelay: '1s' }}>
+                    <Database className="w-8 h-8 text-accent" />
+                  </div>
+                  <div className="absolute bottom-20 left-16 w-20 h-20 bg-gradient-to-br from-primary/30 to-transparent rounded-xl rotate-45 flex items-center justify-center" 
+                       style={{ animationDelay: '0.5s' }}>
+                    <Cloud className="w-10 h-10 text-primary rotate-[-45deg]" />
+                  </div>
+                  <div className="absolute bottom-12 right-8 w-18 h-18 bg-primary/20 rounded-2xl opacity-70 rotate-12 flex items-center justify-center" 
+                       style={{ animationDelay: '1.5s' }}>
+                    <Server className="w-8 h-8 text-primary" />
+                  </div>
+                  
+                  {/* Additional Tech Icons */}
+                  <div className="absolute top-1/3 left-1/3 w-14 h-14 bg-accent/20 rounded-xl flex items-center justify-center opacity-60"
+                       style={{ animationDelay: '0.8s' }}>
+                    <Smartphone className="w-7 h-7 text-accent" />
+                  </div>
+                  <div className="absolute bottom-1/3 right-1/3 w-16 h-16 bg-primary/15 rounded-full flex items-center justify-center opacity-70"
+                       style={{ animationDelay: '1.2s' }}>
+                    <Globe className="w-8 h-8 text-primary" />
+                  </div>
                   
                   {/* Center Glow */}
                   <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-32 h-32 bg-gradient-primary opacity-20 rounded-full blur-xl" />
                   
-                  {/* Floating Elements */}
-                  <div className="absolute top-4 right-4 w-3 h-3 bg-primary rounded-full opacity-60 animate-float" 
-                       style={{ animationDelay: '2s' }} />
-                  <div className="absolute bottom-4 left-4 w-2 h-2 bg-accent rounded-full opacity-80 animate-float" 
-                       style={{ animationDelay: '2.5s' }} />
+                  {/* Floating Tech Elements */}
+                  <div className="absolute top-4 right-4 w-8 h-8 bg-primary/20 rounded-lg opacity-60 animate-float flex items-center justify-center" 
+                       style={{ animationDelay: '2s' }}>
+                    <Cpu className="w-4 h-4 text-primary" />
+                  </div>
+                  <div className="absolute bottom-4 left-4 w-6 h-6 bg-accent/30 rounded-full opacity-80 animate-float flex items-center justify-center" 
+                       style={{ animationDelay: '2.5s' }}>
+                    <Layers className="w-3 h-3 text-accent" />
+                  </div>
                 </div>
               </div>
             </div>
