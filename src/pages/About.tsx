@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { Target, Eye, Users, ArrowRight } from "lucide-react";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
+import aboutInnovation from "@/assets/about-innovation.jpg";
 
 const About = () => {
   return (
@@ -52,9 +53,15 @@ const About = () => {
               </div>
             </div>
             
-            <div className="relative">
-              <div className="w-full h-80 bg-gradient-primary rounded-lg shadow-large"></div>
-              <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-transparent rounded-lg"></div>
+            <div className="relative animate-scale-in">
+              <div className="w-full h-80 rounded-lg shadow-large overflow-hidden">
+                <img 
+                  src={aboutInnovation} 
+                  alt="Digital innovation and software development visualization"
+                  className="w-full h-full object-cover"
+                />
+              </div>
+              <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-transparent rounded-lg"></div>
             </div>
           </div>
         </div>
