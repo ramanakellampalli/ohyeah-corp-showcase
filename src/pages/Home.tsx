@@ -28,8 +28,10 @@ const Home = () => {
               </div>
               
               <div className="space-y-6">
-                <h1 className="text-4xl md:text-5xl lg:text-6xl font-jakarta font-bold text-foreground leading-tight max-w-xl">
-                  OhYeah Software Pvt Ltd
+                <h1 className="text-4xl md:text-5xl lg:text-6xl font-jakarta leading-tight max-w-xl">
+                  <span className="block font-light text-foreground/90">OhYeah</span>
+                  <span className="block font-semibold bg-gradient-primary bg-clip-text text-transparent">Software</span>
+                  <span className="block text-2xl md:text-3xl lg:text-4xl font-normal text-muted-foreground mt-1">Pvt Ltd</span>
                 </h1>
                 <p className="text-lg md:text-xl text-slate-600 dark:text-slate-300 font-normal leading-relaxed max-w-xl">
                   Building SaaS applications that are fast, reliable, and a joy to use.
