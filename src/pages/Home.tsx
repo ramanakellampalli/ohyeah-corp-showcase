@@ -131,7 +131,7 @@ const Home = () => {
       </section>
 
       {/* Core Values */}
-      <section className="pt-8 pb-20 md:pt-12 md:pb-28">
+      <section className="pb-20 md:pb-28">
         <div className="max-w-screen-xl mx-auto px-6 md:px-8 lg:px-10">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
