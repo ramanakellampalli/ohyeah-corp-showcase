@@ -18,7 +18,7 @@ const Home = () => {
           <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gradient-primary opacity-5 rounded-full blur-3xl" />
         </div>
         
-        <div className="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+        <div className="max-w-screen-xl mx-auto px-4 sm:px-6 md:px-6 relative">
           <div className="flex flex-col lg:flex-row lg:items-center gap-8 lg:gap-16">
             {/* Hero Content - Always Left Aligned */}
             <div className="flex-1 max-w-2xl space-y-6 sm:space-y-8 animate-fade-in text-left">
@@ -134,7 +134,7 @@ const Home = () => {
 
       {/* Core Values */}
       <section className="py-12 sm:py-16 md:py-20 lg:py-24">
-        <div className="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-screen-xl mx-auto px-4 sm:px-6 md:px-6">
           <div className="text-center mb-8 sm:mb-12">
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground mb-3 sm:mb-4">
               Our Core Values
