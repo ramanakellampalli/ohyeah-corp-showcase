@@ -106,26 +106,9 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Company Introduction */}
-      <section className="py-16 bg-gradient-subtle">
-        <div className="container mx-auto px-6 text-center">
-          <div className="max-w-3xl mx-auto animate-fade-in">
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-6">
-              Empowering Businesses Through Technology
-            </h2>
-            <p className="text-lg text-muted-foreground leading-relaxed">
-              At OhYeah Software Pvt Ltd, we specialize in developing cutting-edge SaaS applications 
-              that transform how businesses operate. Our innovative solutions combine powerful 
-              functionality with intuitive design, helping companies streamline their processes 
-              and achieve unprecedented growth.
-            </p>
-          </div>
-        </div>
-      </section>
-
       {/* Core Values */}
-      <section className="py-16">
-        <div className="container mx-auto px-6">
+      <section className="py-20 md:py-28">
+        <div className="max-w-screen-xl mx-auto px-6 md:px-8 lg:px-10">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
               Our Core Values
