@@ -14,11 +14,12 @@ const About = () => {
         <div className="container mx-auto px-6">
           <div className="max-w-4xl mx-auto text-center animate-fade-in">
             <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
-              About OhYeah Software
+              Where Innovation Meets <span className="bg-gradient-primary bg-clip-text text-transparent">Execution</span>
             </h1>
             <p className="text-xl text-muted-foreground leading-relaxed">
-              OhYeah Software Pvt Ltd is focused on building next-generation SaaS applications 
-              that simplify and empower businesses.
+              We don't just build software—we craft digital experiences that turn ambitious ideas into 
+              game-changing solutions. At OhYeah Software, we believe that great technology should feel 
+              like magic, work flawlessly, and grow with your dreams.
             </p>
           </div>
         </div>
@@ -30,23 +31,23 @@ const About = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div className="animate-slide-up">
               <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-6">
-                Transforming Business Operations
+                Redefining What's Possible
               </h2>
               <div className="space-y-4 text-muted-foreground leading-relaxed">
                 <p>
-                  Founded with a vision to revolutionize how businesses leverage technology, 
-                  OhYeah Software Pvt Ltd has emerged as a trusted partner for companies 
-                  seeking innovative SaaS solutions.
+                  Born from a simple yet powerful belief: that technology should amplify human potential, 
+                  not complicate it. We're not your typical software company—we're digital architects 
+                  who build the future, one line of code at a time.
                 </p>
                 <p>
-                  Our team of experienced developers, designers, and strategists work 
-                  collaboratively to create applications that not only meet current business 
-                  needs but anticipate future challenges and opportunities.
+                  Our diverse team of creative technologists, UX visionaries, and growth hackers 
+                  doesn't just solve problems—we anticipate them. We craft intelligent solutions 
+                  that evolve with your business, scale with your ambitions, and delight your users.
                 </p>
                 <p>
-                  We believe that great software should be both powerful and accessible, 
-                  which is why we focus on creating intuitive user experiences backed by 
-                  robust, scalable technology.
+                  Every product we create is a testament to our obsession with excellence: 
+                  lightning-fast performance, bulletproof security, and interfaces so intuitive 
+                  that using them feels like second nature.
                 </p>
               </div>
             </div>
