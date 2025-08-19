@@ -133,7 +133,7 @@ const Home = () => {
       </section>
 
       {/* Core Values */}
-      <section className="py-12 sm:py-16 md:py-20 lg:py-24">
+      <section className="py-8 sm:py-12">
         <div className="max-w-full mx-auto px-4">
           <div className="text-center mb-8 sm:mb-12">
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground mb-3 sm:mb-4">
