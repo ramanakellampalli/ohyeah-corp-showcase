@@ -1,6 +1,6 @@
 import { Link, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { Code2 } from "lucide-react";
+import logoIcon from "@/assets/ohyeah-icon.png";
 
 const Navigation = () => {
   const location = useLocation();
@@ -15,8 +15,12 @@ const Navigation = () => {
             to="/" 
             className="flex items-center gap-3 group transition-all duration-200 hover:opacity-80"
           >
-            <div className="w-8 h-8 bg-gradient-primary rounded-lg flex items-center justify-center">
-              <Code2 className="w-5 h-5 text-primary-foreground" />
+            <div className="w-8 h-8 rounded-lg overflow-hidden flex-shrink-0">
+              <img 
+                src={logoIcon} 
+                alt="OhYeah Software" 
+                className="w-full h-full object-contain"
+              />
             </div>
             <div className="flex flex-col">
               <span className="text-lg font-jakarta font-semibold text-foreground leading-tight">
