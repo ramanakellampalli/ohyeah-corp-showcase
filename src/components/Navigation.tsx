@@ -9,25 +9,29 @@ const Navigation = () => {
 
   return (
     <nav className="sticky top-0 z-50 w-full bg-background/80 backdrop-blur-md border-b border-border">
-      <div className="max-w-screen-xl mx-auto px-6 md:px-8 lg:px-10">
+      <div className="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
-          <Link 
-            to="/" 
-            className="flex items-center gap-3 group transition-all duration-200 hover:opacity-80"
-          >
-            <div className="w-8 h-8 bg-gradient-primary rounded-lg flex items-center justify-center">
-              <Code2 className="w-5 h-5 text-primary-foreground" />
-            </div>
-            <div className="flex flex-col">
-              <span className="text-lg font-jakarta font-semibold text-foreground leading-tight">
-                OhYeah
-              </span>
-              <span className="text-xs font-inter font-medium text-muted-foreground leading-tight -mt-0.5">
-                SOFTWARE
-              </span>
-            </div>
-          </Link>
+          {/* Left: Logo and Company Name */}
+          <div className="flex items-center">
+            <Link 
+              to="/" 
+              className="flex items-center gap-3 group transition-all duration-200 hover:opacity-80"
+            >
+              <div className="w-8 h-8 bg-gradient-primary rounded-lg flex items-center justify-center">
+                <Code2 className="w-5 h-5 text-primary-foreground" />
+              </div>
+              <div className="flex flex-col">
+                <span className="text-lg font-jakarta font-semibold text-foreground leading-tight">
+                  OhYeah
+                </span>
+                <span className="text-xs font-inter font-medium text-muted-foreground leading-tight -mt-0.5">
+                  SOFTWARE
+                </span>
+              </div>
+            </Link>
+          </div>
           
+          {/* Center: Navigation Links (hidden on mobile) */}
           <div className="hidden md:flex items-center space-x-8">
             <Link 
               to="/" 
@@ -61,9 +65,15 @@ const Navigation = () => {
             </Link>
           </div>
 
-          <Button variant="default" size="sm" asChild>
-            <Link to="/contact">Get in touch</Link>
-          </Button>
+          {/* Right: CTA Button */}
+          <div className="flex items-center">
+            <Button variant="default" size="sm" asChild>
+              <Link to="/contact">
+                <span className="hidden sm:inline">Get in touch</span>
+                <span className="sm:hidden">Contact</span>
+              </Link>
+            </Button>
+          </div>
         </div>
       </div>
     </nav>
