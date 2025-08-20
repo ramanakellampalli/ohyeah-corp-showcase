@@ -31,29 +31,57 @@ const Footer = () => {
             <h4 className="text-white font-bold uppercase text-xs tracking-widest mb-6">Connect</h4>
             <div className="space-y-4">
               <button 
-                onClick={() => window.open('https://www.linkedin.com/company/ohyeah-software-pvt-ltd/', '_blank', 'noopener,noreferrer')}
-                className="flex items-center text-gray-400 hover:text-blue-400 transition-all duration-200 group cursor-pointer w-full text-left"
+                type="button"
+                onClick={(e) => {
+                  console.log('LinkedIn button clicked');
+                  e.preventDefault();
+                  e.stopPropagation();
+                  window.open('https://www.linkedin.com/company/ohyeah-software-pvt-ltd/', '_blank', 'noopener,noreferrer');
+                }}
+                className="flex items-center text-gray-400 hover:text-blue-400 transition-all duration-200 group cursor-pointer w-full text-left bg-transparent border-none p-0 m-0"
+                style={{ background: 'none', border: 'none' }}
               >
                 <Linkedin className="w-5 h-5 mr-3 group-hover:scale-110 transition-transform duration-200" />
                 LinkedIn
               </button>
               <button 
-                onClick={() => window.open('#', '_blank', 'noopener,noreferrer')}
-                className="flex items-center text-gray-400 hover:text-blue-400 transition-all duration-200 group cursor-pointer w-full text-left"
+                type="button"
+                onClick={(e) => {
+                  console.log('Twitter button clicked');
+                  e.preventDefault();
+                  e.stopPropagation();
+                  window.open('#', '_blank', 'noopener,noreferrer');
+                }}
+                className="flex items-center text-gray-400 hover:text-blue-400 transition-all duration-200 group cursor-pointer w-full text-left bg-transparent border-none p-0 m-0"
+                style={{ background: 'none', border: 'none' }}
               >
                 <Twitter className="w-5 h-5 mr-3 group-hover:scale-110 transition-transform duration-200" />
                 Twitter
               </button>
               <button 
-                onClick={() => window.open('#', '_blank', 'noopener,noreferrer')}
-                className="flex items-center text-gray-400 hover:text-blue-400 transition-all duration-200 group cursor-pointer w-full text-left"
+                type="button"
+                onClick={(e) => {
+                  console.log('GitHub button clicked');
+                  e.preventDefault();
+                  e.stopPropagation();
+                  window.open('#', '_blank', 'noopener,noreferrer');
+                }}
+                className="flex items-center text-gray-400 hover:text-blue-400 transition-all duration-200 group cursor-pointer w-full text-left bg-transparent border-none p-0 m-0"
+                style={{ background: 'none', border: 'none' }}
               >
                 <Github className="w-5 h-5 mr-3 group-hover:scale-110 transition-transform duration-200" />
                 GitHub
               </button>
               <button 
-                onClick={() => window.location.href = 'mailto:ohyeahsoftwarepvtlmtd@gmail.com'}
-                className="flex items-center text-gray-400 hover:text-blue-400 transition-all duration-200 group cursor-pointer w-full text-left"
+                type="button"
+                onClick={(e) => {
+                  console.log('Email button clicked');
+                  e.preventDefault();
+                  e.stopPropagation();
+                  window.location.href = 'mailto:ohyeahsoftwarepvtlmtd@gmail.com';
+                }}
+                className="flex items-center text-gray-400 hover:text-blue-400 transition-all duration-200 group cursor-pointer w-full text-left bg-transparent border-none p-0 m-0"
+                style={{ background: 'none', border: 'none' }}
               >
                 <Mail className="w-5 h-5 mr-3 group-hover:scale-110 transition-transform duration-200" />
                 Email
