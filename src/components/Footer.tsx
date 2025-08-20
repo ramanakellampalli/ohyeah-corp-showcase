@@ -34,35 +34,39 @@ const Footer = () => {
                 href="https://www.linkedin.com/company/ohyeah-software-pvt-ltd/" 
                 target="_blank" 
                 rel="noopener noreferrer" 
-                className="flex items-center text-gray-400 hover:text-blue-400 transition-all duration-200 group"
+                className="flex items-center text-gray-400 hover:text-blue-400 transition-all duration-200 group cursor-pointer"
+                style={{ pointerEvents: 'auto' }}
               >
-                <Linkedin className="w-5 h-5 mr-3 group-hover:scale-110 transition-transform duration-200" />
-                LinkedIn
+                <Linkedin className="w-5 h-5 mr-3 group-hover:scale-110 transition-transform duration-200 pointer-events-none" />
+                <span className="pointer-events-none">LinkedIn</span>
               </a>
               <a 
                 href="#" 
                 target="_blank" 
                 rel="noopener noreferrer" 
-                className="flex items-center text-gray-400 hover:text-blue-400 transition-all duration-200 group"
+                className="flex items-center text-gray-400 hover:text-blue-400 transition-all duration-200 group cursor-pointer"
+                style={{ pointerEvents: 'auto' }}
               >
-                <Twitter className="w-5 h-5 mr-3 group-hover:scale-110 transition-transform duration-200" />
-                Twitter
+                <Twitter className="w-5 h-5 mr-3 group-hover:scale-110 transition-transform duration-200 pointer-events-none" />
+                <span className="pointer-events-none">Twitter</span>
               </a>
               <a 
                 href="#" 
                 target="_blank" 
                 rel="noopener noreferrer" 
-                className="flex items-center text-gray-400 hover:text-blue-400 transition-all duration-200 group"
+                className="flex items-center text-gray-400 hover:text-blue-400 transition-all duration-200 group cursor-pointer"
+                style={{ pointerEvents: 'auto' }}
               >
-                <Github className="w-5 h-5 mr-3 group-hover:scale-110 transition-transform duration-200" />
-                GitHub
+                <Github className="w-5 h-5 mr-3 group-hover:scale-110 transition-transform duration-200 pointer-events-none" />
+                <span className="pointer-events-none">GitHub</span>
               </a>
               <a 
                 href="mailto:ohyeahsoftwarepvtlmtd@gmail.com" 
-                className="flex items-center text-gray-400 hover:text-blue-400 transition-all duration-200 group"
+                className="flex items-center text-gray-400 hover:text-blue-400 transition-all duration-200 group cursor-pointer"
+                style={{ pointerEvents: 'auto' }}
               >
-                <Mail className="w-5 h-5 mr-3 group-hover:scale-110 transition-transform duration-200" />
-                Email
+                <Mail className="w-5 h-5 mr-3 group-hover:scale-110 transition-transform duration-200 pointer-events-none" />
+                <span className="pointer-events-none">Email</span>
               </a>
             </div>
           </div>
