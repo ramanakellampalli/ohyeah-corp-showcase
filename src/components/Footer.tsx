@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Linkedin, Twitter, Github } from "lucide-react";
+import { Linkedin, Twitter, Github, Mail } from "lucide-react";
 
 const Footer = () => {
   return (
@@ -30,17 +30,39 @@ const Footer = () => {
           <div>
             <h4 className="text-white font-bold uppercase text-xs tracking-widest mb-6">Connect</h4>
             <div className="space-y-4">
-              <a href="#" className="flex items-center text-gray-400 hover:text-blue-400 transition-all duration-200 group">
+              <a 
+                href="https://www.linkedin.com/company/ohyeah-software-pvt-ltd/" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="flex items-center text-gray-400 hover:text-blue-400 transition-all duration-200 group"
+              >
                 <Linkedin className="w-5 h-5 mr-3 group-hover:scale-110 transition-transform duration-200" />
                 LinkedIn
               </a>
-              <a href="#" className="flex items-center text-gray-400 hover:text-blue-400 transition-all duration-200 group">
+              <a 
+                href="#" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="flex items-center text-gray-400 hover:text-blue-400 transition-all duration-200 group"
+              >
                 <Twitter className="w-5 h-5 mr-3 group-hover:scale-110 transition-transform duration-200" />
                 Twitter
               </a>
-              <a href="#" className="flex items-center text-gray-400 hover:text-blue-400 transition-all duration-200 group">
+              <a 
+                href="#" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="flex items-center text-gray-400 hover:text-blue-400 transition-all duration-200 group"
+              >
                 <Github className="w-5 h-5 mr-3 group-hover:scale-110 transition-transform duration-200" />
                 GitHub
+              </a>
+              <a 
+                href="mailto:ohyeahsoftwarepvtlmtd@gmail.com" 
+                className="flex items-center text-gray-400 hover:text-blue-400 transition-all duration-200 group"
+              >
+                <Mail className="w-5 h-5 mr-3 group-hover:scale-110 transition-transform duration-200" />
+                Email
               </a>
             </div>
           </div>
