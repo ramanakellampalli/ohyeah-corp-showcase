@@ -134,7 +134,7 @@ const Home = () => {
       </section>
 
       {/* Core Features Section */}
-      <section className="py-16 sm:py-20">
+      <section className="py-20 sm:py-24 mb-16">
         <div className="max-w-full mx-auto px-4">
           <div className="text-center mb-8 sm:mb-16">
             <div className="inline-flex items-center px-3 py-1.5 bg-primary/10 text-primary text-sm font-medium rounded-full border border-primary/20 mb-4">
@@ -196,98 +196,6 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Trust Signals Section */}
-      <section className="py-16 sm:py-20 bg-gradient-subtle">
-        <div className="max-w-full mx-auto px-4">
-          <div className="text-center mb-12">
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-jakarta font-bold text-foreground mb-4">
-              Trusted by Forward-Thinking Companies
-            </h2>
-            <p className="text-base sm:text-lg text-muted-foreground">
-              Join thousands of businesses that have transformed their operations with our solutions
-            </p>
-          </div>
-          
-          {/* Stats */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-16">
-            <div className="text-center">
-              <div className="text-3xl sm:text-4xl font-jakarta font-bold text-primary mb-2">50k+</div>
-              <div className="text-sm sm:text-base text-muted-foreground">Active Users</div>
-            </div>
-            <div className="text-center">
-              <div className="text-3xl sm:text-4xl font-jakarta font-bold text-secondary-accent mb-2">99.9%</div>
-              <div className="text-sm sm:text-base text-muted-foreground">Uptime</div>
-            </div>
-            <div className="text-center">
-              <div className="text-3xl sm:text-4xl font-jakarta font-bold text-accent mb-2">500+</div>
-              <div className="text-sm sm:text-base text-muted-foreground">Companies</div>
-            </div>
-            <div className="text-center">
-              <div className="text-3xl sm:text-4xl font-jakarta font-bold text-primary mb-2">24/7</div>
-              <div className="text-sm sm:text-base text-muted-foreground">Support</div>
-            </div>
-          </div>
-          
-          {/* Testimonial Preview */}
-          <div className="max-w-4xl mx-auto">
-            <div className="bg-card rounded-2xl p-8 border border-border shadow-medium">
-              <div className="flex items-center justify-center mb-6">
-                <div className="flex gap-1">
-                  {[...Array(5)].map((_, i) => (
-                    <Star key={i} className="w-5 h-5 fill-secondary-accent text-secondary-accent" />
-                  ))}
-                </div>
-              </div>
-              <Quote className="w-8 h-8 text-primary/30 mb-4 mx-auto" />
-              <blockquote className="text-lg sm:text-xl text-center text-foreground mb-6 font-medium">
-                "OhYeah Software transformed our business processes. The intuitive interface and powerful features 
-                helped us increase productivity by 300% while reducing operational costs significantly."
-              </blockquote>
-              <div className="text-center">
-                <div className="w-12 h-12 bg-gradient-primary rounded-full mx-auto mb-3 flex items-center justify-center">
-                  <span className="text-primary-foreground font-semibold">JS</span>
-                </div>
-                <div className="font-semibold text-foreground">John Smith</div>
-                <div className="text-sm text-muted-foreground">CTO, TechCorp Solutions</div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* CTA Section */}
-      <section className="py-16 sm:py-20">
-        <div className="max-w-4xl mx-auto px-4 text-center">
-          <div className="bg-gradient-feature/10 rounded-3xl p-8 sm:p-12 border border-primary/10">
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-jakarta font-bold text-foreground mb-4">
-              Ready to Transform Your Business?
-            </h2>
-            <p className="text-base sm:text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
-              Join thousands of companies already using OhYeah Software to streamline their operations and accelerate growth.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button 
-                size="lg" 
-                className="bg-gradient-secondary hover:opacity-90 text-secondary-accent-foreground rounded-xl shadow-medium hover:shadow-large transition-all duration-300 px-8"
-                asChild
-              >
-                <Link to="/contact">
-                  Start Free Trial
-                  <ArrowRight className="w-4 h-4 ml-2" />
-                </Link>
-              </Button>
-              <Button 
-                variant="outline" 
-                size="lg" 
-                className="rounded-xl border-primary/30 hover:bg-primary/5 hover:border-primary/50 transition-all duration-200 px-8"
-                asChild
-              >
-                <Link to="/about">Schedule Demo</Link>
-              </Button>
-            </div>
-          </div>
-        </div>
-      </section>
 
       <Footer />
     </div>
