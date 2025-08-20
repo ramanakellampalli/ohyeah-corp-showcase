@@ -67,10 +67,15 @@ const Navigation = () => {
 
           {/* Right: CTA Button */}
           <div className="flex items-center">
-            <Button variant="default" size="sm" asChild>
+            <Button 
+              variant="default" 
+              size="sm" 
+              className="bg-gradient-secondary hover:opacity-90 text-secondary-accent-foreground shadow-medium hover:shadow-large transition-all duration-300"
+              asChild
+            >
               <Link to="/contact">
-                <span className="hidden sm:inline">Get in touch</span>
-                <span className="sm:hidden">Contact</span>
+                <span className="hidden sm:inline">Get Started</span>
+                <span className="sm:hidden">Start</span>
               </Link>
             </Button>
           </div>

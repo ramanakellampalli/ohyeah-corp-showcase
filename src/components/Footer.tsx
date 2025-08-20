@@ -1,13 +1,39 @@
 import { Link } from "react-router-dom";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Mail } from "lucide-react";
 
 const Footer = () => {
   return (
     <footer className="bg-gradient-subtle border-t border-border">
       <div className="max-w-full mx-auto px-4 py-12">
+        {/* Newsletter Section */}
+        <div className="text-center mb-12 pb-8 border-b border-border">
+          <h2 className="text-2xl md:text-3xl font-jakarta font-bold text-foreground mb-4">
+            Stay Updated
+          </h2>
+          <p className="text-muted-foreground mb-6 max-w-2xl mx-auto">
+            Get the latest updates on our SaaS solutions, product releases, and industry insights delivered to your inbox.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
+            <Input 
+              type="email" 
+              placeholder="Enter your email" 
+              className="flex-1"
+            />
+            <Button 
+              className="bg-gradient-secondary hover:opacity-90 text-secondary-accent-foreground px-6 shadow-medium hover:shadow-large transition-all duration-300"
+            >
+              <Mail className="w-4 h-4 mr-2" />
+              Subscribe
+            </Button>
+          </div>
+        </div>
+        
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           <div>
             <h3 className="text-lg font-bold text-foreground mb-4">OhYeah Software Pvt Ltd</h3>
-            <p className="text-muted-foreground mb-4">Building next-generation SaaS applications that simplify and empower businesses.</p>
+            <p className="text-muted-foreground mb-4">Simplifying Business Software for the Next Generation. Fast, reliable, and built for scale.</p>
           </div>
           
           <div>
