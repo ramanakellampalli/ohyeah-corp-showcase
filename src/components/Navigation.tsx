@@ -17,15 +17,16 @@ const Navigation = () => {
               to="/" 
               className="flex items-center gap-3 group transition-all duration-200 hover:opacity-80"
             >
-              <div className="w-8 h-8 bg-gradient-primary rounded-lg flex items-center justify-center">
-                <Code2 className="w-5 h-5 text-primary-foreground" />
+              <div className="w-7 h-7 bg-gradient-primary rounded-lg flex items-center justify-center">
+                <Code2 className="w-4 h-4 text-primary-foreground" />
               </div>
               <div className="flex flex-col">
-                <span className="text-lg font-jakarta font-semibold text-foreground leading-tight">
-                  OhYeah
-                </span>
-                <span className="text-xs font-inter font-medium text-muted-foreground leading-tight -mt-0.5">
-                  SOFTWARE
+                <div className="text-xl md:text-2xl font-jakarta leading-tight">
+                  <span className="text-foreground font-bold">OhYeah</span>
+                  <span className="text-blue-600 font-medium tracking-wide ml-1">Software</span>
+                </div>
+                <span className="text-xs text-muted-foreground/70 leading-tight -mt-0.5">
+                  Click. Done. OhYeah.
                 </span>
               </div>
             </Link>
