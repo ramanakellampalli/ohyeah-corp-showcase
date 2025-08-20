@@ -4,7 +4,7 @@ import { Linkedin, Twitter, Github, Mail } from "lucide-react";
 const Footer = () => {
   return (
     <footer className="bg-gradient-to-b from-gray-900 to-gray-800">
-      <div className="max-w-7xl mx-auto px-4 py-16">
+      <div className="max-w-7xl mx-auto px-4 py-8">
         
         <div className="grid grid-cols-1 md:grid-cols-4 gap-10">
           <div className="md:col-span-2">
@@ -64,7 +64,7 @@ const Footer = () => {
           </div>
         </div>
         
-        <div className="mt-16 pt-8 border-t border-gray-700 text-center">
+        <div className="mt-4 pt-4 border-t border-gray-700 text-center">
           <p className="text-gray-400">
             © {new Date().getFullYear()} OhYeah Software Pvt Ltd. All rights reserved.
           </p>

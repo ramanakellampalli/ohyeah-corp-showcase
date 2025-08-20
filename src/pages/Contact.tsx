@@ -40,7 +40,7 @@ const Contact = () => {
       <Navigation />
       
       {/* Hero Section */}
-      <section className="pt-24 pb-16">
+      <section className="pt-8 pb-8">
         <div className="container mx-auto px-6">
           <div className="max-w-3xl mx-auto text-center animate-fade-in">
             <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
@@ -135,8 +135,7 @@ const Contact = () => {
                   </div>
                   <div>
                     <h3 className="font-semibold text-foreground mb-1">Email</h3>
-                    <p className="text-muted-foreground">contact@ohyeahsoftware.com</p>
-                    <p className="text-muted-foreground">info@ohyeahsoftware.com</p>
+                    <p className="text-muted-foreground">ohyeahsoftwarepvtlmtd@gmail.com</p>
                   </div>
                 </div>
 

@@ -10,7 +10,7 @@ const Home = () => {
       <Navigation />
       
       {/* Hero Section */}
-      <section className="relative py-16 md:py-24 overflow-hidden">
+      <section className="relative md:py-8 overflow-hidden">
         {/* Enhanced Background Elements */}
         <div className="absolute inset-0">
           <div className="absolute top-20 left-10 w-72 h-72 bg-primary/20 rounded-full blur-3xl opacity-60 animate-float" style={{ animationDelay: '0s' }} />
@@ -65,15 +65,15 @@ const Home = () => {
               <div className="flex flex-wrap items-center gap-4 sm:gap-6 text-xs sm:text-sm text-muted-foreground pt-2 sm:pt-4">
                 <span className="flex items-center gap-2">
                   <CheckCircle className="w-3 h-3 text-accent" />
-                  No setup fees
+                  Click.
                 </span>
                 <span className="flex items-center gap-2">
                   <CheckCircle className="w-3 h-3 text-accent" />
-                  14-day free trial
+                  Done.
                 </span>
                 <span className="flex items-center gap-2">
                   <CheckCircle className="w-3 h-3 text-accent" />
-                  Cancel anytime
+                  OhYeah.
                 </span>
               </div>
             </div>
@@ -134,7 +134,7 @@ const Home = () => {
       </section>
 
       {/* Core Features Section */}
-      <section className="py-20 sm:py-24 mb-16">
+      <section className="py-8">
         <div className="max-w-full mx-auto px-4">
           <div className="text-center mb-8 sm:mb-16">
             <div className="inline-flex items-center px-3 py-1.5 bg-primary/10 text-primary text-sm font-medium rounded-full border border-primary/20 mb-4">

@@ -23,7 +23,7 @@ const Navigation = () => {
               <div className="flex flex-col">
                 <div className="text-xl md:text-2xl font-jakarta leading-tight">
                   <span className="text-foreground font-bold">OhYeah</span>
-                  <span className="text-blue-600 font-medium tracking-wide ml-1">Software</span>
+                  <span className="text-orange-600 font-medium tracking-wide ml-1">Software</span>
                 </div>
                 <span className="text-xs text-muted-foreground/70 leading-tight -mt-0.5">
                   Click. Done. OhYeah.
