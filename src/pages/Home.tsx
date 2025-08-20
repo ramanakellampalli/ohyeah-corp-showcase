@@ -10,7 +10,7 @@ const Home = () => {
       <Navigation />
       
       {/* Hero Section */}
-      <section className="relative py-16 md:py-24 overflow-hidden">
+      <section className="relative py-16 md:py-24 overflow-hidden mb-8">
         {/* Enhanced Background Elements */}
         <div className="absolute inset-0">
           <div className="absolute top-20 left-10 w-72 h-72 bg-primary/20 rounded-full blur-3xl opacity-60 animate-float" style={{ animationDelay: '0s' }} />
@@ -132,70 +132,6 @@ const Home = () => {
           </div>
         </div>
       </section>
-
-      {/* Core Features Section */}
-      <section className="py-20 sm:py-24 mb-16">
-        <div className="max-w-full mx-auto px-4">
-          <div className="text-center mb-8 sm:mb-16">
-            <div className="inline-flex items-center px-3 py-1.5 bg-primary/10 text-primary text-sm font-medium rounded-full border border-primary/20 mb-4">
-              Why Choose OhYeah Software
-            </div>
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-jakarta font-bold text-foreground mb-4">
-              Powerful Features for Modern Business
-            </h2>
-            <p className="text-base sm:text-lg text-muted-foreground max-w-2xl mx-auto">
-              Everything you need to build, deploy, and scale your SaaS applications with confidence
-            </p>
-          </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
-            <div className="group relative overflow-hidden bg-card rounded-2xl p-6 border border-border hover:border-primary/20 transition-all duration-300 hover:shadow-large">
-              <div className="w-12 sm:w-16 h-12 sm:h-16 bg-gradient-primary rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
-                <Zap className="w-6 sm:w-8 h-6 sm:h-8 text-primary-foreground" />
-              </div>
-              <h3 className="text-lg sm:text-xl font-jakarta font-semibold text-foreground mb-3">Lightning Fast</h3>
-              <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">
-                Built with modern tech stack for blazing fast performance and seamless user experience.
-              </p>
-              <div className="absolute inset-0 bg-gradient-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-            </div>
-            
-            <div className="group relative overflow-hidden bg-card rounded-2xl p-6 border border-border hover:border-secondary-accent/20 transition-all duration-300 hover:shadow-large">
-              <div className="w-12 sm:w-16 h-12 sm:h-16 bg-gradient-secondary rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
-                <Shield className="w-6 sm:w-8 h-6 sm:h-8 text-secondary-accent-foreground" />
-              </div>
-              <h3 className="text-lg sm:text-xl font-jakarta font-semibold text-foreground mb-3">Enterprise Security</h3>
-              <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">
-                Bank-level security with end-to-end encryption, SOC 2 compliance, and robust access controls.
-              </p>
-              <div className="absolute inset-0 bg-gradient-secondary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-            </div>
-            
-            <div className="group relative overflow-hidden bg-card rounded-2xl p-6 border border-border hover:border-accent/20 transition-all duration-300 hover:shadow-large">
-              <div className="w-12 sm:w-16 h-12 sm:h-16 bg-gradient-to-br from-accent to-accent/80 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
-                <Users className="w-6 sm:w-8 h-6 sm:h-8 text-accent-foreground" />
-              </div>
-              <h3 className="text-lg sm:text-xl font-jakarta font-semibold text-foreground mb-3">Team Collaboration</h3>
-              <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">
-                Real-time collaboration tools that keep your team in sync and boost productivity.
-              </p>
-              <div className="absolute inset-0 bg-accent/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-            </div>
-            
-            <div className="group relative overflow-hidden bg-card rounded-2xl p-6 border border-border hover:border-primary/20 transition-all duration-300 hover:shadow-large">
-              <div className="w-12 sm:w-16 h-12 sm:h-16 bg-gradient-feature rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
-                <Timer className="w-6 sm:w-8 h-6 sm:h-8 text-primary-foreground" />
-              </div>
-              <h3 className="text-lg sm:text-xl font-jakarta font-semibold text-foreground mb-3">Quick Setup</h3>
-              <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">
-                Get up and running in minutes with our intuitive setup process and comprehensive documentation.
-              </p>
-              <div className="absolute inset-0 bg-gradient-feature/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-            </div>
-          </div>
-        </div>
-      </section>
-
 
       <Footer />
     </div>
