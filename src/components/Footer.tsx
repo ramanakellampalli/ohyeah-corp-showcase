@@ -34,10 +34,6 @@ const Footer = () => {
                 href="https://www.linkedin.com/company/ohyeah-software-pvt-ltd/" 
                 target="_blank" 
                 rel="noopener noreferrer"
-                onClick={(e) => {
-                  console.log('LinkedIn anchor clicked');
-                  // Allow default behavior for anchor tags
-                }}
                 className="flex items-center text-gray-400 hover:text-blue-400 transition-all duration-200 group cursor-pointer"
               >
                 <Linkedin className="w-5 h-5 mr-3 group-hover:scale-110 transition-transform duration-200" />
@@ -45,10 +41,6 @@ const Footer = () => {
               </a>
               <a 
                 href="#"
-                onClick={(e) => {
-                  console.log('Twitter anchor clicked'); 
-                  e.preventDefault();
-                }}
                 className="flex items-center text-gray-400 hover:text-blue-400 transition-all duration-200 group cursor-pointer"
               >
                 <Twitter className="w-5 h-5 mr-3 group-hover:scale-110 transition-transform duration-200" />
@@ -56,10 +48,6 @@ const Footer = () => {
               </a>
               <a 
                 href="#"
-                onClick={(e) => {
-                  console.log('GitHub anchor clicked');
-                  e.preventDefault();
-                }}
                 className="flex items-center text-gray-400 hover:text-blue-400 transition-all duration-200 group cursor-pointer"
               >
                 <Github className="w-5 h-5 mr-3 group-hover:scale-110 transition-transform duration-200" />
@@ -67,10 +55,6 @@ const Footer = () => {
               </a>
               <a 
                 href="mailto:ohyeahsoftwarepvtlmtd@gmail.com"
-                onClick={(e) => {
-                  console.log('Email anchor clicked');
-                  // Allow default behavior for mailto
-                }}
                 className="flex items-center text-gray-400 hover:text-blue-400 transition-all duration-200 group cursor-pointer"
               >
                 <Mail className="w-5 h-5 mr-3 group-hover:scale-110 transition-transform duration-200" />
