@@ -1,11 +1,16 @@
 import { Link, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { Code2 } from "lucide-react";
+import { Code2, Menu, X } from "lucide-react";
+import { useState } from "react";
 
 const Navigation = () => {
   const location = useLocation();
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const isActive = (path: string) => location.pathname === path;
+
+  const toggleMobileMenu = () => setIsMobileMenuOpen(!isMobileMenuOpen);
+  const closeMobileMenu = () => setIsMobileMenuOpen(false);
 
   return (
     <nav className="sticky top-0 z-50 w-full bg-background/80 backdrop-blur-md border-b border-border">
@@ -66,8 +71,22 @@ const Navigation = () => {
             </Link>
           </div>
 
-          {/* Right: CTA Button */}
-          <div className="flex items-center">
+          {/* Right: Mobile Menu Button + CTA Button */}
+          <div className="flex items-center gap-2">
+            {/* Mobile Menu Toggle */}
+            <button
+              onClick={toggleMobileMenu}
+              className="md:hidden p-2 rounded-lg hover:bg-muted transition-colors"
+              aria-label="Toggle mobile menu"
+            >
+              {isMobileMenuOpen ? (
+                <X className="h-5 w-5 text-foreground" />
+              ) : (
+                <Menu className="h-5 w-5 text-foreground" />
+              )}
+            </button>
+            
+            {/* CTA Button */}
             <Button 
               variant="default" 
               size="sm" 
@@ -81,6 +100,47 @@ const Navigation = () => {
             </Button>
           </div>
         </div>
+        
+        {/* Mobile Menu */}
+        {isMobileMenuOpen && (
+          <div className="md:hidden border-t border-border bg-background/95 backdrop-blur-md">
+            <div className="px-4 py-6 space-y-4">
+              <Link 
+                to="/" 
+                onClick={closeMobileMenu}
+                className={`block text-base font-medium transition-colors duration-200 hover:text-primary ${
+                  isActive('/') 
+                    ? 'text-primary' 
+                    : 'text-muted-foreground'
+                }`}
+              >
+                Home
+              </Link>
+              <Link 
+                to="/about" 
+                onClick={closeMobileMenu}
+                className={`block text-base font-medium transition-colors duration-200 hover:text-primary ${
+                  isActive('/about') 
+                    ? 'text-primary' 
+                    : 'text-muted-foreground'
+                }`}
+              >
+                About
+              </Link>
+              <Link 
+                to="/contact" 
+                onClick={closeMobileMenu}
+                className={`block text-base font-medium transition-colors duration-200 hover:text-primary ${
+                  isActive('/contact') 
+                    ? 'text-primary' 
+                    : 'text-muted-foreground'
+                }`}
+              >
+                Contact
+              </Link>
+            </div>
+          </div>
+        )}
       </div>
     </nav>
   );
