@@ -64,7 +64,7 @@ const TypingAnimation = () => {
   }, [prefersReducedMotion]);
 
   return (
-    <div className="mt-6 h-20 flex items-start">
+    <div className="mt-8 h-20 flex items-start">
       <div className="flex items-start gap-3">
         {/* Avatar */}
         <div className="w-9 h-9 rounded-full bg-gradient-to-r from-blue-500 to-emerald-500 flex items-center justify-center flex-shrink-0 text-white font-semibold text-sm">
@@ -72,7 +72,7 @@ const TypingAnimation = () => {
         </div>
         
         {/* Message Bubble */}
-        <div className="relative max-w-[70ch]">
+        <div className="max-w-[70ch]">
           <div className="bg-slate-50 dark:bg-white/6 border border-slate-200 dark:border-white/12 rounded-2xl px-4 py-3 shadow-sm dark:shadow-[0_0_0_1px_rgba(0,0,0,0.25)]">
             <div 
               className="text-sm leading-relaxed text-slate-900 dark:text-slate-200"
@@ -87,17 +87,16 @@ const TypingAnimation = () => {
                   style={{ animation: prefersReducedMotion ? 'none' : undefined }}
                 />
               )}
+              {/* Typing Dots */}
+              {isTyping && !prefersReducedMotion && (
+                <span className="inline-flex gap-1 ml-2">
+                  <span className="w-1.5 h-1.5 bg-slate-400 dark:bg-slate-500 rounded-full animate-pulse" style={{ animationDelay: '0ms', animationDuration: '1200ms' }} />
+                  <span className="w-1.5 h-1.5 bg-slate-400 dark:bg-slate-500 rounded-full animate-pulse" style={{ animationDelay: '150ms', animationDuration: '1200ms' }} />
+                  <span className="w-1.5 h-1.5 bg-slate-400 dark:bg-slate-500 rounded-full animate-pulse" style={{ animationDelay: '300ms', animationDuration: '1200ms' }} />
+                </span>
+              )}
             </div>
           </div>
-          
-          {/* Typing Dots */}
-          {isTyping && !prefersReducedMotion && (
-            <div className="absolute -bottom-1 left-4 flex gap-1">
-              <div className="w-1.5 h-1.5 bg-slate-400 dark:bg-slate-500 rounded-full animate-pulse" style={{ animationDelay: '0ms', animationDuration: '1200ms' }} />
-              <div className="w-1.5 h-1.5 bg-slate-400 dark:bg-slate-500 rounded-full animate-pulse" style={{ animationDelay: '150ms', animationDuration: '1200ms' }} />
-              <div className="w-1.5 h-1.5 bg-slate-400 dark:bg-slate-500 rounded-full animate-pulse" style={{ animationDelay: '300ms', animationDuration: '1200ms' }} />
-            </div>
-          )}
         </div>
       </div>
     </div>
