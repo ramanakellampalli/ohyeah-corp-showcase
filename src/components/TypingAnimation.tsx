@@ -52,16 +52,16 @@ const TypingAnimation = () => {
     typeMessage();
   }, [typeMessage]);
 
-  // Caret blinking effect
+  // Caret blinking effect - only when typing
   useEffect(() => {
-    if (prefersReducedMotion) return;
+    if (prefersReducedMotion || !isTyping) return;
     
     const caretInterval = setInterval(() => {
       setShowCaret(prev => !prev);
     }, 800);
 
     return () => clearInterval(caretInterval);
-  }, [prefersReducedMotion]);
+  }, [prefersReducedMotion, isTyping]);
 
   return (
     <div className="mt-8 h-20 flex items-start">
@@ -80,12 +80,9 @@ const TypingAnimation = () => {
               aria-live="polite" 
               aria-atomic="true"
             >
-              {displayedText}
-              {!prefersReducedMotion && (
-                <span 
-                  className={`inline-block w-0.5 h-4 bg-slate-900 dark:bg-slate-200 ml-0.5 ${showCaret ? 'opacity-100' : 'opacity-0'}`}
-                  style={{ animation: prefersReducedMotion ? 'none' : undefined }}
-                />
+              <span>{displayedText}</span>
+              {!prefersReducedMotion && isTyping && showCaret && (
+                <span className="inline-block w-0.5 h-4 bg-slate-900 dark:bg-slate-200 ml-0.5" />
               )}
             </div>
             {/* Typing Dots - Below text inside bubble */}
