@@ -69,6 +69,16 @@ const Navigation = () => {
             >
               Contact
             </Link>
+            <Link 
+              to="/products" 
+              className={`text-sm font-medium transition-colors duration-200 hover:text-primary ${
+                isActive('/products') 
+                  ? 'text-primary' 
+                  : 'text-muted-foreground'
+              }`}
+            >
+              Products
+            </Link>
           </div>
 
           {/* Right: Mobile Menu Button + CTA Button */}
