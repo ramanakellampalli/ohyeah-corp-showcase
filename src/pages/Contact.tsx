@@ -9,6 +9,7 @@ import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { useToast } from "@/hooks/use-toast";
 import TypingAnimation from "@/components/TypingAnimation";
+import emailjs from '@emailjs/browser';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -59,7 +60,7 @@ const Contact = () => {
     }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
     // Validate all fields
@@ -75,12 +76,36 @@ const Contact = () => {
     
     // Only submit if no errors
     if (!nameError && !emailError && !messageError) {
-      toast({
-        title: "Message Sent!",
-        description: "Thank you for your message. We'll get back to you soon.",
-      });
-      setFormData({ name: "", email: "", message: "" });
-      setErrors({ name: "", email: "", message: "" });
+      try {
+        // Send email using EmailJS
+        const templateParams = {
+          from_name: formData.name,
+          from_email: formData.email,
+          message: formData.message,
+          to_email: 'ohyeahsoftwarepvtlmtd@gmail.com'
+        };
+
+        await emailjs.send(
+          'YOUR_SERVICE_ID', // You'll need to set this up in EmailJS
+          'YOUR_TEMPLATE_ID', // You'll need to set this up in EmailJS
+          templateParams,
+          'YOUR_PUBLIC_KEY' // You'll need to set this up in EmailJS
+        );
+
+        toast({
+          title: "Message Sent!",
+          description: "Thank you for your message. We'll get back to you soon.",
+        });
+        setFormData({ name: "", email: "", message: "" });
+        setErrors({ name: "", email: "", message: "" });
+      } catch (error) {
+        console.error('Failed to send email:', error);
+        toast({
+          title: "Error",
+          description: "Failed to send message. Please try again or contact us directly.",
+          variant: "destructive"
+        });
+      }
     }
   };
 
@@ -118,7 +143,9 @@ const Contact = () => {
               <CardContent>
                 <form onSubmit={handleSubmit} className="space-y-6">
                   <div className="space-y-2">
-                    <Label htmlFor="name">Name</Label>
+                    <Label htmlFor="name">
+                      Name <span className="text-red-500">*</span>
+                    </Label>
                     <Input
                       id="name"
                       name="name"
@@ -134,7 +161,9 @@ const Contact = () => {
                   </div>
                   
                   <div className="space-y-2">
-                    <Label htmlFor="email">Email</Label>
+                    <Label htmlFor="email">
+                      Email <span className="text-red-500">*</span>
+                    </Label>
                     <Input
                       id="email"
                       name="email"
@@ -151,7 +180,9 @@ const Contact = () => {
                   </div>
                   
                   <div className="space-y-2">
-                    <Label htmlFor="message">Message</Label>
+                    <Label htmlFor="message">
+                      Message <span className="text-red-500">*</span>
+                    </Label>
                     <Textarea
                       id="message"
                       name="message"
