@@ -64,6 +64,8 @@ This project is built with:
 
 Simply open [Lovable](https://lovable.dev/projects/41be7fe8-3ad2-4ce8-a3b2-fcba1ea32bb2) and click on Share -> Publish.
 
+Using Cloud Flare CI/CD
+
 ## Can I connect a custom domain to my Lovable project?
 
 Yes, you can!
