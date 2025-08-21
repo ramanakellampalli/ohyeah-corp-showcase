@@ -16,7 +16,33 @@ const Contact = () => {
     email: "",
     message: ""
   });
+  const [errors, setErrors] = useState({
+    name: "",
+    email: "",
+    message: ""
+  });
   const { toast } = useToast();
+
+  // Check if form is valid
+  const isFormValid = formData.name.trim() !== "" && 
+                     formData.email.trim() !== "" && 
+                     /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email) &&
+                     formData.message.trim() !== "";
+
+  const validateField = (name: string, value: string) => {
+    switch (name) {
+      case 'name':
+        return value.trim() === '' ? 'Name is required' : '';
+      case 'email':
+        if (value.trim() === '') return 'Email is required';
+        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)) return 'Please enter a valid email';
+        return '';
+      case 'message':
+        return value.trim() === '' ? 'Message is required' : '';
+      default:
+        return '';
+    }
+  };
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -24,16 +50,38 @@ const Contact = () => {
       ...prev,
       [name]: value
     }));
+    
+    // Validate field on change
+    const error = validateField(name, value);
+    setErrors(prev => ({
+      ...prev,
+      [name]: error
+    }));
   };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle form submission logic here
-    toast({
-      title: "Message Sent!",
-      description: "Thank you for your message. We'll get back to you soon.",
+    
+    // Validate all fields
+    const nameError = validateField('name', formData.name);
+    const emailError = validateField('email', formData.email);
+    const messageError = validateField('message', formData.message);
+    
+    setErrors({
+      name: nameError,
+      email: emailError,
+      message: messageError
     });
-    setFormData({ name: "", email: "", message: "" });
+    
+    // Only submit if no errors
+    if (!nameError && !emailError && !messageError) {
+      toast({
+        title: "Message Sent!",
+        description: "Thank you for your message. We'll get back to you soon.",
+      });
+      setFormData({ name: "", email: "", message: "" });
+      setErrors({ name: "", email: "", message: "" });
+    }
   };
 
   return (
@@ -78,8 +126,11 @@ const Contact = () => {
                       onChange={handleInputChange}
                       placeholder="Your full name"
                       required
-                      className="border-border focus:ring-primary"
+                      className={`border-border focus:ring-primary ${errors.name ? 'border-red-500 focus:ring-red-500' : ''}`}
                     />
+                    {errors.name && (
+                      <p className="text-sm text-red-500 mt-1">{errors.name}</p>
+                    )}
                   </div>
                   
                   <div className="space-y-2">
@@ -92,8 +143,11 @@ const Contact = () => {
                       onChange={handleInputChange}
                       placeholder="your.email@company.com"
                       required
-                      className="border-border focus:ring-primary"
+                      className={`border-border focus:ring-primary ${errors.email ? 'border-red-500 focus:ring-red-500' : ''}`}
                     />
+                    {errors.email && (
+                      <p className="text-sm text-red-500 mt-1">{errors.email}</p>
+                    )}
                   </div>
                   
                   <div className="space-y-2">
@@ -106,11 +160,20 @@ const Contact = () => {
                       placeholder="Tell us about your project or how we can help..."
                       rows={6}
                       required
-                      className="border-border focus:ring-primary resize-none"
+                      className={`border-border focus:ring-primary resize-none ${errors.message ? 'border-red-500 focus:ring-red-500' : ''}`}
                     />
+                    {errors.message && (
+                      <p className="text-sm text-red-500 mt-1">{errors.message}</p>
+                    )}
                   </div>
                   
-                  <Button type="submit" variant="hero" size="lg" className="w-full">
+                  <Button 
+                    type="submit" 
+                    variant="hero" 
+                    size="lg" 
+                    className="w-full" 
+                    disabled={!isFormValid}
+                  >
                     Send Message
                   </Button>
                   
