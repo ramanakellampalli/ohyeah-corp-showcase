@@ -85,12 +85,23 @@ const Contact = () => {
           to_email: 'ohyeahsoftwarepvtlmtd@gmail.com'
         };
 
-        await emailjs.send(
-          'YOUR_SERVICE_ID', // You'll need to set this up in EmailJS
-          'YOUR_TEMPLATE_ID', // You'll need to set this up in EmailJS
-          templateParams,
-          'YOUR_PUBLIC_KEY' // You'll need to set this up in EmailJS
-        );
+        const SERVICE_ID = 'service_87e3e8w';
+        const PUBLIC_KEY = 'MpvhhQWgILeDSEJ80';
+        const TEMPLATE_ID = '' as const; // TODO: add your EmailJS template ID when available
+
+        if (TEMPLATE_ID) {
+          await emailjs.send(
+            SERVICE_ID,
+            TEMPLATE_ID,
+            templateParams,
+            PUBLIC_KEY
+          );
+        } else {
+          // Fallback: open an email draft in the user's mail client
+          const subject = encodeURIComponent('New contact form message');
+          const body = encodeURIComponent(`Name: ${formData.name}\nEmail: ${formData.email}\n\n${formData.message}`);
+          window.location.href = `mailto:ohyeahsoftwarepvtlmtd@gmail.com?subject=${subject}&body=${body}`;
+        }
 
         toast({
           title: "Message Sent!",
