@@ -165,14 +165,21 @@ const Contact = () => {
                 </div>
               </div>
 
-              {/* Map Placeholder */}
-              <Card className="shadow-soft border-border">
-                <CardContent className="p-6">
-                  <div className="w-full h-48 bg-gradient-subtle rounded-lg flex items-center justify-center">
-                    <div className="text-center">
-                      <MapPin className="w-12 h-12 text-primary mx-auto mb-2" />
-                      <p className="text-muted-foreground">Map coming soon</p>
-                    </div>
+              {/* Interactive Map */}
+              <Card className="shadow-soft border-border overflow-hidden">
+                <CardContent className="p-0">
+                  <div className="w-full aspect-video bg-gradient-subtle">
+                    <iframe
+                      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15439.834623930663!2d80.42651!3d16.3066984!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a35eff9482d944b%3A0x939b99e482f08327!2sGuntur%2C%20Andhra%20Pradesh!5e0!3m2!1sen!2sin!4v1635123456789!5m2!1sen!2sin"
+                      width="100%"
+                      height="100%"
+                      style={{ border: 0 }}
+                      allowFullScreen
+                      loading="lazy"
+                      referrerPolicy="no-referrer-when-downgrade"
+                      title="Map showing Guntur, Andhra Pradesh, India"
+                      className="w-full h-full"
+                    />
                   </div>
                 </CardContent>
               </Card>
