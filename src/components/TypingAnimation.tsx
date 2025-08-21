@@ -33,8 +33,8 @@ const TypingAnimation = () => {
       if (charIndex < currentMessage.length) {
         setDisplayedText(currentMessage.slice(0, charIndex + 1));
         charIndex++;
-        // Random jitter between 28-68ms
-        const delay = Math.random() * 40 + 28;
+        // Random jitter between 60-120ms (slower)
+        const delay = Math.random() * 60 + 60;
         setTimeout(typeChar, delay);
       } else {
         setIsTyping(false);
