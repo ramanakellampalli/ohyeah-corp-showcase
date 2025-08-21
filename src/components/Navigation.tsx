@@ -81,8 +81,20 @@ const Navigation = () => {
             </Link>
           </div>
 
-          {/* Right: Mobile Menu Button + CTA Button */}
-          <div className="flex items-center gap-2">
+          {/* Right: CTA Button + Mobile Menu Button */}
+          <div className="flex items-center gap-2">            
+            {/* CTA Button - Hidden on mobile */}
+            <Button 
+              variant="default" 
+              size="sm" 
+              className="hidden sm:flex bg-gradient-secondary hover:opacity-90 text-secondary-accent-foreground shadow-medium hover:shadow-large transition-all duration-300"
+              asChild
+            >
+              <Link to="/contact">
+                Get Started
+              </Link>
+            </Button>
+            
             {/* Mobile Menu Toggle */}
             <button
               onClick={toggleMobileMenu}
@@ -95,19 +107,6 @@ const Navigation = () => {
                 <Menu className="h-5 w-5 text-foreground" />
               )}
             </button>
-            
-            {/* CTA Button */}
-            <Button 
-              variant="default" 
-              size="sm" 
-              className="bg-gradient-secondary hover:opacity-90 text-secondary-accent-foreground shadow-medium hover:shadow-large transition-all duration-300"
-              asChild
-            >
-              <Link to="/contact">
-                <span className="hidden sm:inline">Get Started</span>
-                <span className="sm:hidden">Start</span>
-              </Link>
-            </Button>
           </div>
         </div>
         
@@ -147,6 +146,17 @@ const Navigation = () => {
                 }`}
               >
                 Contact
+              </Link>
+              <Link 
+                to="/products" 
+                onClick={closeMobileMenu}
+                className={`block text-base font-medium transition-colors duration-200 hover:text-primary ${
+                  isActive('/products') 
+                    ? 'text-primary' 
+                    : 'text-muted-foreground'
+                }`}
+              >
+                Products
               </Link>
             </div>
           </div>
