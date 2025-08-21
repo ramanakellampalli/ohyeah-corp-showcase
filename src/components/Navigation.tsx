@@ -60,16 +60,6 @@ const Navigation = () => {
               About
             </Link>
             <Link 
-              to="/contact" 
-              className={`text-sm font-medium transition-colors duration-200 hover:text-primary ${
-                isActive('/contact') 
-                  ? 'text-primary' 
-                  : 'text-muted-foreground'
-              }`}
-            >
-              Contact
-            </Link>
-            <Link 
               to="/products" 
               className={`text-sm font-medium transition-colors duration-200 hover:text-primary ${
                 isActive('/products') 
@@ -78,6 +68,16 @@ const Navigation = () => {
               }`}
             >
               Products
+            </Link>
+            <Link 
+              to="/contact" 
+              className={`text-sm font-medium transition-colors duration-200 hover:text-primary ${
+                isActive('/contact') 
+                  ? 'text-primary' 
+                  : 'text-muted-foreground'
+              }`}
+            >
+              Contact
             </Link>
           </div>
 
