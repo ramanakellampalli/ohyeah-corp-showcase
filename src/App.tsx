@@ -7,7 +7,7 @@ import Home from "./pages/Home";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
 import NotFound from "./pages/NotFound";
-import ProductsPage from "./pages/products";
+import ProductsPage from "./pages/Products";
 
 const queryClient = new QueryClient();
 
