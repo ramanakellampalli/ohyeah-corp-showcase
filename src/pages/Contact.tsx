@@ -8,6 +8,7 @@ import { Mail, MapPin, Phone } from "lucide-react";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { useToast } from "@/hooks/use-toast";
+import TypingAnimation from "@/components/TypingAnimation";
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -112,6 +113,8 @@ const Contact = () => {
                   <Button type="submit" variant="hero" size="lg" className="w-full">
                     Send Message
                   </Button>
+                  
+                  <TypingAnimation />
                 </form>
               </CardContent>
             </Card>
