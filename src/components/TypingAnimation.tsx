@@ -87,15 +87,15 @@ const TypingAnimation = () => {
                   style={{ animation: prefersReducedMotion ? 'none' : undefined }}
                 />
               )}
-              {/* Typing Dots */}
-              {isTyping && !prefersReducedMotion && (
-                <span className="inline-flex gap-1 ml-2">
-                  <span className="w-1.5 h-1.5 bg-slate-400 dark:bg-slate-500 rounded-full animate-pulse" style={{ animationDelay: '0ms', animationDuration: '1200ms' }} />
-                  <span className="w-1.5 h-1.5 bg-slate-400 dark:bg-slate-500 rounded-full animate-pulse" style={{ animationDelay: '150ms', animationDuration: '1200ms' }} />
-                  <span className="w-1.5 h-1.5 bg-slate-400 dark:bg-slate-500 rounded-full animate-pulse" style={{ animationDelay: '300ms', animationDuration: '1200ms' }} />
-                </span>
-              )}
             </div>
+            {/* Typing Dots - Below text inside bubble */}
+            {isTyping && !prefersReducedMotion && (
+              <div className="flex gap-1 mt-2">
+                <span className="w-1.5 h-1.5 bg-slate-400 dark:bg-slate-500 rounded-full animate-pulse" style={{ animationDelay: '0ms', animationDuration: '1200ms' }} />
+                <span className="w-1.5 h-1.5 bg-slate-400 dark:bg-slate-500 rounded-full animate-pulse" style={{ animationDelay: '150ms', animationDuration: '1200ms' }} />
+                <span className="w-1.5 h-1.5 bg-slate-400 dark:bg-slate-500 rounded-full animate-pulse" style={{ animationDelay: '300ms', animationDuration: '1200ms' }} />
+              </div>
+            )}
           </div>
         </div>
       </div>
