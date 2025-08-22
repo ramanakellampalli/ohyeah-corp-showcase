@@ -245,7 +245,7 @@ const ProductsPage: React.FC = () => {
           </div>
 
           {/* grid */}
-          <div className="mt-12 grid gap-6 md:grid-cols-2">
+          <div className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             <ComingSoonCard
               name="Fresh Saver"
               tagline="Save Food, Save Money"
@@ -268,6 +268,18 @@ const ProductsPage: React.FC = () => {
               ]}
               eta="Q1 2026"
               progress={40}
+            />
+
+            <ComingSoonCard
+              name="Mana Bazaar"
+              tagline="India's Marketplace"
+              bullets={[
+                "A modern local marketplace to buy, sell, and discover items nearby.",
+                "Post your products in minutes and connect with trusted buyers and sellers in your city.",
+                "A simple, fast, and community-driven way to trade."
+              ]}
+              eta="Q2 2026"
+              progress={25}
             />
           </div>
 
