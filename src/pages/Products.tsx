@@ -7,6 +7,9 @@ import {
   Mail,
   ExternalLink,
   CheckCircle2,
+  Apple,
+  GraduationCap,
+  ShoppingCart,
 } from "lucide-react";
 import {
   Card,
@@ -130,6 +133,7 @@ function ComingSoonCard({
   progress,
   href,
   badge,
+  icon: IconComponent,
 }: {
   name: string;
   tagline: string;
@@ -138,6 +142,7 @@ function ComingSoonCard({
   progress: number;
   href?: string;
   badge?: string;
+  icon: React.ComponentType<{ className?: string }>;
 }) {
   return (
     <motion.div
@@ -153,7 +158,7 @@ function ComingSoonCard({
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-3">
                 <div className="grid place-items-center h-11 w-11 rounded-2xl bg-gradient-to-br from-blue-500/20 to-emerald-500/20">
-                  <Rocket className="h-5 w-5" />
+                  <IconComponent className="h-5 w-5" />
                 </div>
                 <div>
                   <h3 className="text-xl md:text-2xl font-semibold tracking-tight">
@@ -256,6 +261,7 @@ const ProductsPage: React.FC = () => {
               ]}
               eta="Q4 2025"
               progress={65}
+              icon={Apple}
             />
 
             <ComingSoonCard
@@ -268,6 +274,7 @@ const ProductsPage: React.FC = () => {
               ]}
               eta="Q1 2026"
               progress={40}
+              icon={GraduationCap}
             />
 
             <ComingSoonCard
@@ -280,6 +287,7 @@ const ProductsPage: React.FC = () => {
               ]}
               eta="Q2 2026"
               progress={25}
+              icon={ShoppingCart}
             />
           </div>
 
