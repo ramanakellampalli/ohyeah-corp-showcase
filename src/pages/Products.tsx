@@ -234,9 +234,9 @@ const ProductsPage: React.FC = () => {
               initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
-              className="text-4xl md:text-6xl font-extrabold tracking-tight leading-tight text-foreground drop-shadow-sm"
+              className="text-4xl md:text-6xl tracking-tight leading-tight text-foreground drop-shadow-sm"
             >
-              Our Products
+              Our <span className="bg-gradient-primary bg-clip-text text-transparent">Products</span>
             </motion.h1>
             <motion.p
               initial={{ opacity: 0 }}

@@ -128,8 +128,8 @@ const Contact = () => {
       <section className="pt-8 pb-8">
         <div className="container mx-auto px-6">
           <div className="max-w-3xl mx-auto text-center animate-fade-in">
-            <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
-              Get In Touch
+            <h1 className="text-4xl md:text-5xl text-foreground mb-6">
+              Get In <span className="bg-gradient-primary bg-clip-text text-transparent">Touch</span>
             </h1>
             <p className="text-xl text-muted-foreground leading-relaxed">
               Ready to transform your business with innovative SaaS solutions? 

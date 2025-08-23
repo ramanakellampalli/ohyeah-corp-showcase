@@ -140,8 +140,8 @@ const Home = () => {
             <div className="inline-flex items-center px-3 py-1.5 bg-primary/10 text-primary text-sm font-medium rounded-full border border-primary/20 mb-4">
               Why Choose OhYeah Software
             </div>
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-jakarta font-bold text-foreground mb-4">
-              Powerful Features for Modern Business
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-jakarta text-foreground mb-4">
+              Powerful Features for <span className="bg-gradient-primary bg-clip-text text-transparent">Modern Business</span>
             </h2>
             <p className="text-base sm:text-lg text-muted-foreground max-w-2xl mx-auto">
               Everything you need to build, deploy, and scale your SaaS applications with confidence

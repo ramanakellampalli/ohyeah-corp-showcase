@@ -31,8 +31,8 @@ const About = () => {
         <div className="container mx-auto px-6">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div className="animate-slide-up">
-              <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-6">
-                Redefining What's Possible
+              <h2 className="text-3xl md:text-4xl text-foreground mb-6">
+                Redefining What's <span className="bg-gradient-primary bg-clip-text text-transparent">Possible</span>
               </h2>
               <div className="space-y-4 text-muted-foreground leading-relaxed">
                 <p>
