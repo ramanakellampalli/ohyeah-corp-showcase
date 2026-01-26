@@ -9,7 +9,6 @@ import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { useToast } from "@/hooks/use-toast";
 import TypingAnimation from "@/components/TypingAnimation";
-import emailjs from '@emailjs/browser';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -22,6 +21,7 @@ const Contact = () => {
     email: "",
     message: ""
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const { toast } = useToast();
 
   // Check if form is valid
@@ -76,46 +76,39 @@ const Contact = () => {
     
     // Only submit if no errors
     if (!nameError && !emailError && !messageError) {
+      setIsSubmitting(true);
+      
       try {
-        // Send email using EmailJS
-        const templateParams = {
-          from_name: formData.name,
-          from_email: formData.email,
-          message: formData.message,
-          to_email: 'ohyeahsoftwarepvtlmtd@gmail.com'
-        };
+        const response = await fetch('/api/contact', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(formData),
+        });
 
-        const SERVICE_ID = 'service_87e3e8w';
-        const PUBLIC_KEY = 'MpvhhQWgILeDSEJ80';
-        const TEMPLATE_ID = '' as const; // TODO: add your EmailJS template ID when available
+        const data = await response.json();
 
-        if (TEMPLATE_ID) {
-          await emailjs.send(
-            SERVICE_ID,
-            TEMPLATE_ID,
-            templateParams,
-            PUBLIC_KEY
-          );
-        } else {
-          // Fallback: open an email draft in the user's mail client
-          const subject = encodeURIComponent('New contact form message');
-          const body = encodeURIComponent(`Name: ${formData.name}\nEmail: ${formData.email}\n\n${formData.message}`);
-          window.location.href = `mailto:ohyeahsoftwarepvtlmtd@gmail.com?subject=${subject}&body=${body}`;
+        if (!response.ok) {
+          throw new Error(data.error || 'Failed to send message');
         }
 
         toast({
           title: "Message Sent!",
           description: "Thank you for your message. We'll get back to you soon.",
         });
+        
         setFormData({ name: "", email: "", message: "" });
         setErrors({ name: "", email: "", message: "" });
       } catch (error) {
         console.error('Failed to send email:', error);
         toast({
           title: "Error",
-          description: "Failed to send message. Please try again or contact us directly.",
+          description: error instanceof Error ? error.message : "Failed to send message. Please try again or contact us directly.",
           variant: "destructive"
         });
+      } finally {
+        setIsSubmitting(false);
       }
     }
   };
@@ -164,6 +157,7 @@ const Contact = () => {
                       onChange={handleInputChange}
                       placeholder="Your full name"
                       required
+                      disabled={isSubmitting}
                       className={`border-border focus:ring-primary ${errors.name ? 'border-red-500 focus:ring-red-500' : ''}`}
                     />
                     {errors.name && (
@@ -183,6 +177,7 @@ const Contact = () => {
                       onChange={handleInputChange}
                       placeholder="your.email@company.com"
                       required
+                      disabled={isSubmitting}
                       className={`border-border focus:ring-primary ${errors.email ? 'border-red-500 focus:ring-red-500' : ''}`}
                     />
                     {errors.email && (
@@ -202,6 +197,7 @@ const Contact = () => {
                       placeholder="Tell us about your project or how we can help..."
                       rows={6}
                       required
+                      disabled={isSubmitting}
                       className={`border-border focus:ring-primary resize-none ${errors.message ? 'border-red-500 focus:ring-red-500' : ''}`}
                     />
                     {errors.message && (
@@ -214,9 +210,9 @@ const Contact = () => {
                     variant="hero" 
                     size="lg" 
                     className="w-full" 
-                    disabled={!isFormValid}
+                    disabled={!isFormValid || isSubmitting}
                   >
-                    Send Message
+                    {isSubmitting ? 'Sending...' : 'Send Message'}
                   </Button>
                   
                   <TypingAnimation />
@@ -243,7 +239,7 @@ const Contact = () => {
                   </div>
                   <div>
                     <h3 className="font-semibold text-foreground mb-1">Email</h3>
-                    <p className="text-muted-foreground">ohyeahsoftwarepvtlmtd@gmail.com</p>
+                    <p className="text-muted-foreground">info@ohyeahsaas.com</p>
                   </div>
                 </div>
 
