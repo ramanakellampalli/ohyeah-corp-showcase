@@ -60,7 +60,7 @@ export default {
 			},
 			fontFamily: {
 				inter: ['Inter', 'sans-serif'],
-				jakarta: ['Plus Jakarta Sans', 'sans-serif']
+				sora: ['Sora', 'sans-serif']
 			},
 			borderRadius: {
 				lg: 'var(--radius)',

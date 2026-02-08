@@ -32,7 +32,7 @@ const Navigation = () => {
                 />
               </div>
               <div className="flex flex-col">
-                <div className="text-2xl md:text-3xl font-jakarta leading-tight">
+                <div className="text-2xl md:text-3xl font-sora leading-tight">
                   <span className="font-bold bg-gradient-primary bg-clip-text text-transparent">OhYeah</span>
                   <span className="font-semibold text-secondary-accent ml-1.5">Software</span>
                 </div>
