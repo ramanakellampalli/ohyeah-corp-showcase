@@ -3,12 +3,12 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Mail, MapPin, Phone } from "lucide-react";
+import { Mail, MapPin, Phone, Send } from "lucide-react";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { useToast } from "@/hooks/use-toast";
 import TypingAnimation from "@/components/TypingAnimation";
+import contactHero from "@/assets/contact-hero.jpg";
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -25,8 +25,8 @@ const Contact = () => {
   const { toast } = useToast();
 
   // Check if form is valid
-  const isFormValid = formData.name.trim() !== "" && 
-                     formData.email.trim() !== "" && 
+  const isFormValid = formData.name.trim() !== "" &&
+                     formData.email.trim() !== "" &&
                      /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email) &&
                      formData.message.trim() !== "";
 
@@ -51,7 +51,7 @@ const Contact = () => {
       ...prev,
       [name]: value
     }));
-    
+
     // Validate field on change
     const error = validateField(name, value);
     setErrors(prev => ({
@@ -62,22 +62,22 @@ const Contact = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    
+
     // Validate all fields
     const nameError = validateField('name', formData.name);
     const emailError = validateField('email', formData.email);
     const messageError = validateField('message', formData.message);
-    
+
     setErrors({
       name: nameError,
       email: emailError,
       message: messageError
     });
-    
+
     // Only submit if no errors
     if (!nameError && !emailError && !messageError) {
       setIsSubmitting(true);
-      
+
       try {
         const response = await fetch('/api/contact', {
           method: 'POST',
@@ -97,7 +97,7 @@ const Contact = () => {
           title: "Message Sent!",
           description: "Thank you for your message. We'll get back to you soon.",
         });
-        
+
         setFormData({ name: "", email: "", message: "" });
         setErrors({ name: "", email: "", message: "" });
       } catch (error) {
@@ -116,151 +116,170 @@ const Contact = () => {
   return (
     <div className="min-h-screen bg-background">
       <Navigation />
-      
-      {/* Hero Section */}
-      <section className="pt-8 pb-8">
-        <div className="container mx-auto px-6">
-          <div className="max-w-3xl mx-auto text-center animate-fade-in">
-            <h1 className="text-4xl md:text-5xl text-foreground mb-6">
-              Get In <span className="bg-gradient-primary bg-clip-text text-transparent">Touch</span>
+
+      {/* Hero Section — Full-bleed image, editorial layout */}
+      <section className="relative min-h-[70vh] flex items-center overflow-hidden">
+        {/* Background Image */}
+        <div className="absolute inset-0">
+          <img
+            src={contactHero}
+            alt=""
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-black/85 via-black/70 to-black/40" />
+        </div>
+
+        {/* Hero Content */}
+        <div className="relative z-10 w-full max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 py-20">
+          <div className="max-w-3xl">
+            <p className="text-xs font-semibold uppercase tracking-widest text-white/80 mb-4 font-inter">
+              Contact Us
+            </p>
+            <h1 className="text-4xl sm:text-5xl md:text-6xl font-normal font-lucidia tracking-[-0.03em] leading-[1.05] text-white mb-6">
+              Let's start the conversation
             </h1>
-            <p className="text-xl text-muted-foreground leading-relaxed">
-              Ready to transform your business with innovative SaaS solutions? 
-              Let's start the conversation.
+            <p className="text-lg sm:text-xl text-white/80 leading-relaxed font-inter font-normal">
+              Ready to transform your business with innovative SaaS solutions? We're here to help you succeed. Reach out and let's make it happen.
             </p>
           </div>
         </div>
       </section>
 
-      {/* Contact Form and Info */}
-      <section className="pb-16">
-        <div className="container mx-auto px-6">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+      {/* Form & Contact Info Section */}
+      <section className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
             {/* Contact Form */}
-            <Card className="shadow-medium border-border">
-              <CardHeader>
-                <CardTitle className="text-2xl">Send us a message</CardTitle>
-                <CardDescription>
+            <div>
+              <div className="mb-8">
+                <h2 className="text-2xl font-bold font-lucidia tracking-tight text-gray-900 mb-2">
+                  Send us a message
+                </h2>
+                <p className="text-base text-gray-600 font-inter">
                   Fill out the form below and we'll get back to you as soon as possible.
-                </CardDescription>
-              </CardHeader>
-              <CardContent>
-                <form onSubmit={handleSubmit} className="space-y-6">
-                  <div className="space-y-2">
-                    <Label htmlFor="name">
-                      Name <span className="text-red-500">*</span>
-                    </Label>
-                    <Input
-                      id="name"
-                      name="name"
-                      value={formData.name}
-                      onChange={handleInputChange}
-                      placeholder="Your full name"
-                      required
-                      disabled={isSubmitting}
-                      className={`border-border focus:ring-primary ${errors.name ? 'border-red-500 focus:ring-red-500' : ''}`}
-                    />
-                    {errors.name && (
-                      <p className="text-sm text-red-500 mt-1">{errors.name}</p>
-                    )}
-                  </div>
-                  
-                  <div className="space-y-2">
-                    <Label htmlFor="email">
-                      Email <span className="text-red-500">*</span>
-                    </Label>
-                    <Input
-                      id="email"
-                      name="email"
-                      type="email"
-                      value={formData.email}
-                      onChange={handleInputChange}
-                      placeholder="your.email@company.com"
-                      required
-                      disabled={isSubmitting}
-                      className={`border-border focus:ring-primary ${errors.email ? 'border-red-500 focus:ring-red-500' : ''}`}
-                    />
-                    {errors.email && (
-                      <p className="text-sm text-red-500 mt-1">{errors.email}</p>
-                    )}
-                  </div>
-                  
-                  <div className="space-y-2">
-                    <Label htmlFor="message">
-                      Message <span className="text-red-500">*</span>
-                    </Label>
-                    <Textarea
-                      id="message"
-                      name="message"
-                      value={formData.message}
-                      onChange={handleInputChange}
-                      placeholder="Tell us about your project or how we can help..."
-                      rows={6}
-                      required
-                      disabled={isSubmitting}
-                      className={`border-border focus:ring-primary resize-none ${errors.message ? 'border-red-500 focus:ring-red-500' : ''}`}
-                    />
-                    {errors.message && (
-                      <p className="text-sm text-red-500 mt-1">{errors.message}</p>
-                    )}
-                  </div>
-                  
-                  <Button 
-                    type="submit" 
-                    variant="hero" 
-                    size="lg" 
-                    className="w-full" 
-                    disabled={!isFormValid || isSubmitting}
-                  >
-                    {isSubmitting ? 'Sending...' : 'Send Message'}
-                  </Button>
-                  
-                  <TypingAnimation />
-                </form>
-              </CardContent>
-            </Card>
+                </p>
+              </div>
+
+              <form onSubmit={handleSubmit} className="space-y-6">
+                <div className="space-y-2">
+                  <Label htmlFor="name" className="text-sm font-medium text-gray-900 font-inter">
+                    Name <span className="text-red-500">*</span>
+                  </Label>
+                  <Input
+                    id="name"
+                    name="name"
+                    value={formData.name}
+                    onChange={handleInputChange}
+                    placeholder="Your full name"
+                    required
+                    disabled={isSubmitting}
+                    className={`rounded-lg border-gray-300 focus:border-primary focus:ring-primary font-inter ${errors.name ? 'border-red-500 focus:border-red-500 focus:ring-red-500' : ''}`}
+                  />
+                  {errors.name && (
+                    <p className="text-sm text-red-500 font-inter">{errors.name}</p>
+                  )}
+                </div>
+
+                <div className="space-y-2">
+                  <Label htmlFor="email" className="text-sm font-medium text-gray-900 font-inter">
+                    Email <span className="text-red-500">*</span>
+                  </Label>
+                  <Input
+                    id="email"
+                    name="email"
+                    type="email"
+                    value={formData.email}
+                    onChange={handleInputChange}
+                    placeholder="your.email@company.com"
+                    required
+                    disabled={isSubmitting}
+                    className={`rounded-lg border-gray-300 focus:border-primary focus:ring-primary font-inter ${errors.email ? 'border-red-500 focus:border-red-500 focus:ring-red-500' : ''}`}
+                  />
+                  {errors.email && (
+                    <p className="text-sm text-red-500 font-inter">{errors.email}</p>
+                  )}
+                </div>
+
+                <div className="space-y-2">
+                  <Label htmlFor="message" className="text-sm font-medium text-gray-900 font-inter">
+                    Message <span className="text-red-500">*</span>
+                  </Label>
+                  <Textarea
+                    id="message"
+                    name="message"
+                    value={formData.message}
+                    onChange={handleInputChange}
+                    placeholder="Tell us about your project or how we can help..."
+                    rows={6}
+                    required
+                    disabled={isSubmitting}
+                    className={`rounded-lg border-gray-300 focus:border-primary focus:ring-primary resize-none font-inter ${errors.message ? 'border-red-500 focus:border-red-500 focus:ring-red-500' : ''}`}
+                  />
+                  {errors.message && (
+                    <p className="text-sm text-red-500 font-inter">{errors.message}</p>
+                  )}
+                </div>
+
+                <Button
+                  type="submit"
+                  size="lg"
+                  className="w-full bg-gray-900 text-white hover:bg-gray-800 rounded-lg font-semibold"
+                  disabled={!isFormValid || isSubmitting}
+                >
+                  {isSubmitting ? (
+                    'Sending...'
+                  ) : (
+                    <span className="flex items-center justify-center gap-2">
+                      Send Message
+                      <Send className="w-4 h-4" />
+                    </span>
+                  )}
+                </Button>
+
+                <TypingAnimation />
+              </form>
+            </div>
 
             {/* Contact Information */}
-            <div className="space-y-8 animate-slide-up">
+            <div className="space-y-10">
               <div>
-                <h2 className="text-2xl font-bold text-foreground mb-6">
+                <h2 className="text-2xl font-bold font-lucidia tracking-tight text-gray-900 mb-4">
                   Contact Information
                 </h2>
-                <p className="text-muted-foreground mb-8 leading-relaxed">
-                  Reach out to us through any of the following channels. 
-                  We're here to help you succeed.
+                <p className="text-base text-gray-600 font-inter leading-relaxed">
+                  Reach out to us through any of the following channels. We're here to help you succeed.
                 </p>
               </div>
 
               <div className="space-y-6">
-                <div className="flex items-start space-x-4">
+                <div className="flex items-start gap-4">
                   <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0">
                     <Mail className="w-6 h-6 text-primary" />
                   </div>
                   <div>
-                    <h3 className="font-semibold text-foreground mb-1">Email</h3>
-                    <p className="text-muted-foreground">info@ohyeahsaas.com</p>
+                    <h3 className="text-base font-bold text-gray-900 mb-1 font-lucidia">Email</h3>
+                    <p className="text-sm text-gray-600 font-inter">info@ohyeahsaas.com</p>
                   </div>
                 </div>
 
-                <div className="flex items-start space-x-4">
+                <div className="flex items-start gap-4">
                   <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0">
                     <Phone className="w-6 h-6 text-primary" />
                   </div>
                   <div>
-                    <h3 className="font-semibold text-foreground mb-1">Phone</h3>
-                    <p className="text-muted-foreground">+1 (555) 123-4567</p>
-                    <p className="text-muted-foreground">+1 (555) 987-6543</p>
+                    <h3 className="text-base font-bold text-gray-900 mb-1 font-lucidia">Phone</h3>
+                    <p className="text-sm text-gray-600 font-inter">+1 (555) 123-4567</p>
+                    <p className="text-sm text-gray-600 font-inter">+1 (555) 987-6543</p>
                   </div>
                 </div>
 
-                <div className="flex items-start space-x-4">
+                <div className="flex items-start gap-4">
                   <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0">
                     <MapPin className="w-6 h-6 text-primary" />
                   </div>
                   <div>
-                    <h3 className="font-semibold text-foreground mb-1">Office</h3>
-                    <p className="text-muted-foreground">
+                    <h3 className="text-base font-bold text-gray-900 mb-1 font-lucidia">Office</h3>
+                    <p className="text-sm text-gray-600 font-inter">
                       123 Tech Street<br />
                       Innovation District<br />
                       San Francisco, CA 94105
@@ -270,23 +289,19 @@ const Contact = () => {
               </div>
 
               {/* Interactive Map */}
-              <Card className="shadow-soft border-border overflow-hidden">
-                <CardContent className="p-0">
-                  <div className="w-full aspect-video bg-gradient-subtle">
-                    <iframe
-                      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15439.834623930663!2d80.42651!3d16.3066984!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a35eff9482d944b%3A0x939b99e482f08327!2sGuntur%2C%20Andhra%20Pradesh!5e0!3m2!1sen!2sin!4v1635123456789!5m2!1sen!2sin"
-                      width="100%"
-                      height="100%"
-                      style={{ border: 0 }}
-                      allowFullScreen
-                      loading="lazy"
-                      referrerPolicy="no-referrer-when-downgrade"
-                      title="Map showing Guntur, Andhra Pradesh, India"
-                      className="w-full h-full"
-                    />
-                  </div>
-                </CardContent>
-              </Card>
+              <div className="w-full h-80 rounded-lg overflow-hidden border border-gray-200 shadow-sm">
+                <iframe
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15439.834623930663!2d80.42651!3d16.3066984!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a35eff9482d944b%3A0x939b99e482f08327!2sGuntur%2C%20Andhra%20Pradesh!5e0!3m2!1sen!2sin!4v1635123456789!5m2!1sen!2sin"
+                  width="100%"
+                  height="100%"
+                  style={{ border: 0 }}
+                  allowFullScreen
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  title="Map showing Guntur, Andhra Pradesh, India"
+                  className="w-full h-full grayscale"
+                />
+              </div>
             </div>
           </div>
         </div>

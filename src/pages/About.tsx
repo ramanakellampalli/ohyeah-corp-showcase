@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
-import { Target, Eye, Users, ArrowRight } from "lucide-react";
+import { Target, Eye, Users, Lightbulb, Rocket, ArrowRight, Award, Heart } from "lucide-react";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import aboutInnovation from "@/assets/about-innovation.jpg";
@@ -9,156 +9,95 @@ const About = () => {
   return (
     <div className="min-h-screen bg-background">
       <Navigation />
-      
-      {/* Hero Section */}
-      <section className="relative pt-8 pb-8 overflow-hidden">
-        <div className="container mx-auto px-6">
-          <div className="max-w-4xl mx-auto text-center animate-fade-in">
-            <h1 className="text-4xl md:text-5xl text-foreground mb-6">
-              Where Innovation Meets <span className="bg-gradient-primary bg-clip-text text-transparent">Execution</span>
+
+      {/* Hero Section — Full-bleed image, editorial layout */}
+      <section className="relative min-h-[70vh] flex items-center overflow-hidden">
+        {/* Background Image */}
+        <div className="absolute inset-0">
+          <img
+            src={aboutInnovation}
+            alt=""
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-black/85 via-black/70 to-black/40" />
+        </div>
+
+        {/* Hero Content */}
+        <div className="relative z-10 w-full max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 py-20">
+          <div className="max-w-3xl">
+            <p className="text-xs font-semibold uppercase tracking-widest text-white/80 mb-4 font-inter">
+              About Us
+            </p>
+            <h1 className="text-4xl sm:text-5xl md:text-6xl font-normal font-lucidia tracking-[-0.03em] leading-[1.05] text-white mb-6">
+              Where innovation meets execution
             </h1>
-            <p className="text-xl text-muted-foreground leading-relaxed">
-              We don't just build software—we craft digital experiences that turn ambitious ideas into 
-              game-changing solutions. At OhYeah Software, we believe that great technology should feel 
-              like magic, work flawlessly, and grow with your dreams.
+            <p className="text-lg sm:text-xl text-white/80 leading-relaxed font-inter font-normal">
+              We don't just build software—we craft digital experiences that turn ambitious ideas into game-changing solutions. At OhYeah Software, great technology should feel like magic, work flawlessly, and grow with your dreams.
             </p>
           </div>
         </div>
       </section>
 
-      {/* Company Overview */}
-      <section className="py-16 bg-gradient-subtle">
-        <div className="container mx-auto px-6">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div className="animate-slide-up">
-              <h2 className="text-3xl md:text-4xl text-foreground mb-6">
-                Redefining What's <span className="bg-gradient-primary bg-clip-text text-transparent">Possible</span>
-              </h2>
-              <div className="space-y-4 text-muted-foreground leading-relaxed">
-                <p>
-                  Born from a simple yet powerful belief: that technology should amplify human potential, 
-                  not complicate it. We're not your typical software company—we're digital architects 
-                  who build the future, one line of code at a time.
-                </p>
-                <p>
-                  Our diverse team of creative technologists, UX visionaries, and growth hackers 
-                  doesn't just solve problems—we anticipate them. We craft intelligent solutions 
-                  that evolve with your business, scale with your ambitions, and delight your users.
-                </p>
-                <p>
-                  Every product we create is a testament to our obsession with excellence: 
-                  lightning-fast performance, bulletproof security, and interfaces so intuitive 
-                  that using them feels like second nature.
-                </p>
-              </div>
-            </div>
-            
-            <div className="relative animate-scale-in">
-              <div className="w-full h-80 rounded-lg shadow-large overflow-hidden">
-                <img 
-                  src={aboutInnovation} 
-                  alt="Digital innovation and software development visualization"
-                  className="w-full h-full object-cover"
-                />
-              </div>
-              <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-transparent rounded-lg"></div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Vision & Mission */}
-      <section className="py-16">
-        <div className="container mx-auto px-6">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-            <div className="text-center p-8 bg-card rounded-lg shadow-soft border border-border hover:shadow-medium transition-all duration-300">
-              <div className="w-16 h-16 bg-gradient-primary rounded-full flex items-center justify-center mx-auto mb-6">
-                <Eye className="w-8 h-8 text-primary-foreground" />
-              </div>
-              <h3 className="text-2xl font-bold text-foreground mb-4">Our Vision</h3>
-              <p className="text-muted-foreground leading-relaxed">
-                To be the leading provider of innovative SaaS solutions that empower businesses 
-                to achieve their full potential through technology. We envision a world where 
-                every company, regardless of size, has access to enterprise-grade software 
-                that drives growth and efficiency.
-              </p>
-            </div>
-            
-            <div className="text-center p-8 bg-card rounded-lg shadow-soft border border-border hover:shadow-medium transition-all duration-300">
-              <div className="w-16 h-16 bg-gradient-primary rounded-full flex items-center justify-center mx-auto mb-6">
-                <Target className="w-8 h-8 text-primary-foreground" />
-              </div>
-              <h3 className="text-2xl font-bold text-foreground mb-4">Our Mission</h3>
-              <p className="text-muted-foreground leading-relaxed">
-                To develop and deliver cutting-edge SaaS applications that simplify complex 
-                business processes, enhance productivity, and enable sustainable growth. 
-                We are committed to excellence in design, development, and customer service.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Team Values */}
-      <section className="py-16 bg-gradient-subtle">
-        <div className="container mx-auto px-6">
-          <div className="max-w-4xl mx-auto">
-            <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-6">
-                What Drives Us
-              </h2>
-              <p className="text-lg text-muted-foreground">
-                Our commitment to excellence is reflected in every aspect of our work
-              </p>
-            </div>
-            
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              <div className="flex items-start space-x-4">
-                <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0">
-                  <Users className="w-6 h-6 text-primary" />
-                </div>
-                <div>
-                  <h4 className="text-lg font-semibold text-foreground mb-2">Customer-Centric Approach</h4>
-                  <p className="text-muted-foreground">
-                    We put our customers at the heart of everything we do, ensuring our solutions 
-                    address real business challenges and deliver measurable value.
-                  </p>
-                </div>
-              </div>
-              
-              <div className="flex items-start space-x-4">
-                <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0">
-                  <Target className="w-6 h-6 text-primary" />
-                </div>
-                <div>
-                  <h4 className="text-lg font-semibold text-foreground mb-2">Quality First</h4>
-                  <p className="text-muted-foreground">
-                    We maintain the highest standards in code quality, security, and performance, 
-                    ensuring our applications exceed industry benchmarks.
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* CTA Section */}
-      <section className="py-16">
-        <div className="container mx-auto px-6 text-center">
-          <div className="max-w-3xl mx-auto">
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-6">
-              Ready to Transform Your Business?
+      {/* Core Values — Editorial grid */}
+      <section className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
+          <div className="max-w-2xl mb-16">
+            <p className="text-xs font-semibold uppercase tracking-widest text-primary mb-3 font-inter">
+              Core Values
+            </p>
+            <h2 className="text-3xl md:text-4xl font-extrabold font-sora tracking-[-0.02em] text-gray-900 mb-4">
+              What drives us forward
             </h2>
-            <p className="text-lg text-muted-foreground mb-8">
-              Let's discuss how our SaaS solutions can help your company achieve its goals.
+            <p className="text-lg text-gray-600 leading-relaxed font-inter">
+              Our commitment to excellence is reflected in every aspect of our work.
             </p>
-            <Button variant="hero" size="xl" asChild>
-              <Link to="/contact">
-                Get In Touch
-                <ArrowRight className="w-5 h-5" />
-              </Link>
-            </Button>
+          </div>
+
+          {/* Values Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {/* Value 1 */}
+            <div className="space-y-4">
+              <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center">
+                <Users className="w-6 h-6 text-primary" />
+              </div>
+              <h4 className="text-lg font-bold text-gray-900 font-sora tracking-tight">Customer-Centric</h4>
+              <p className="text-sm text-gray-600 leading-relaxed font-inter">
+                We put our customers at the heart of everything we do, ensuring our solutions address real business challenges.
+              </p>
+            </div>
+
+            {/* Value 2 */}
+            <div className="space-y-4">
+              <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center">
+                <Award className="w-6 h-6 text-primary" />
+              </div>
+              <h4 className="text-lg font-bold text-gray-900 font-sora tracking-tight">Quality First</h4>
+              <p className="text-sm text-gray-600 leading-relaxed font-inter">
+                We maintain the highest standards in code quality, security, and performance, exceeding industry benchmarks.
+              </p>
+            </div>
+
+            {/* Value 3 */}
+            <div className="space-y-4">
+              <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center">
+                <Lightbulb className="w-6 h-6 text-primary" />
+              </div>
+              <h4 className="text-lg font-bold text-gray-900 font-sora tracking-tight">Innovation</h4>
+              <p className="text-sm text-gray-600 leading-relaxed font-inter">
+                We constantly push boundaries, exploring new technologies and approaches to deliver cutting-edge solutions.
+              </p>
+            </div>
+
+            {/* Value 4 */}
+            <div className="space-y-4">
+              <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center">
+                <Heart className="w-6 h-6 text-primary" />
+              </div>
+              <h4 className="text-lg font-bold text-gray-900 font-sora tracking-tight">Integrity</h4>
+              <p className="text-sm text-gray-600 leading-relaxed font-inter">
+                We build trust through transparency, honesty, and ethical practices in every interaction and decision.
+              </p>
+            </div>
           </div>
         </div>
       </section>
