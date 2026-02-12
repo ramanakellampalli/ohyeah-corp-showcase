@@ -1,302 +1,165 @@
-import React, { useState } from "react";
-import { motion } from "framer-motion";
-import {
-  Rocket,
-  Sparkles,
-  Clock,
-  Mail,
-  ExternalLink,
-  CheckCircle2,
-  Apple,
-  GraduationCap,
-  ShoppingCart,
-} from "lucide-react";
-import {
-  Card,
-  CardHeader,
-  CardContent,
-  CardFooter,
-} from "@/components/ui/card";
+import { Link } from "react-router-dom";
+import { Apple, GraduationCap, ShoppingCart, ArrowRight, Rocket, Clock } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import {
-  Dialog,
-  DialogContent,
-  DialogHeader,
-  DialogTitle,
-  DialogDescription,
-  DialogFooter,
-  DialogTrigger,
-} from "@/components/ui/dialog";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
+import productsHero from "@/assets/products-hero.jpg";
 
-// Helper: subtle gradient border wrapper
-function GradientBorder({ children }: { children: React.ReactNode }) {
-  return (
-    <div className="relative rounded-3xl p-[1px] bg-gradient-to-r from-blue-500/40 via-cyan-500/40 to-emerald-500/40">
-      <div className="rounded-3xl bg-background/70 backdrop-blur-sm h-full w-full">
-        {children}
-      </div>
-    </div>
-  );
-}
+const Products = () => {
+  const products = [
+    {
+      name: "Fresh Saver",
+      tagline: "Save Food, Save Money",
+      description: "Discover surplus food from local restaurants and stores at discounted prices. Help reduce food waste while enjoying delicious meals for less.",
+      features: [
+        "Real-time inventory from local businesses",
+        "Dashboards & weekly savings insights",
+        "Order history & rewards program",
+      ],
+      eta: "Q4 2025",
+      progress: 65,
+      icon: Apple,
+      color: "emerald",
+    },
+    {
+      name: "Edu Manage",
+      tagline: "School Management System",
+      description: "Comprehensive school management platform for administrators, teachers, and parents. Streamline operations and improve communication.",
+      features: [
+        "Attendance tracking & announcements",
+        "Fee management & timetable planning",
+        "Student admissions & analytics dashboard",
+      ],
+      eta: "Q1 2026",
+      progress: 40,
+      icon: GraduationCap,
+      color: "blue",
+    },
+    {
+      name: "Mana Bazaar",
+      tagline: "India's Marketplace",
+      description: "A modern local marketplace to buy, sell, and discover items nearby. Connect with trusted buyers and sellers in your city.",
+      features: [
+        "Post products in minutes",
+        "Location-based discovery",
+        "Community-driven trust system",
+      ],
+      eta: "Q2 2026",
+      progress: 25,
+      icon: ShoppingCart,
+      color: "orange",
+    },
+  ];
 
-// Progress bar (0-100)
-function Progress({ value }: { value: number }) {
-  return (
-    <div className="w-full h-2 rounded-full bg-foreground/10 overflow-hidden">
-      <div
-        className="h-full rounded-full bg-gradient-to-r from-blue-500 via-cyan-500 to-emerald-500"
-        style={{ width: `${Math.min(Math.max(value, 0), 100)}%` }}
-      />
-    </div>
-  );
-}
-
-// Waitlist dialog (local-only; replace with your backend later)
-function WaitlistDialog({ product }: { product: string }) {
-  const [email, setEmail] = useState("");
-  const [submitted, setSubmitted] = useState(false);
-
-  return (
-    <Dialog>
-      <DialogTrigger asChild>
-        <Button size="lg" className="rounded-2xl" disabled>
-          Notify me
-        </Button>
-      </DialogTrigger>
-      <DialogContent className="rounded-2xl">
-        <DialogHeader>
-          <DialogTitle>Join the waitlist</DialogTitle>
-          <DialogDescription>
-            Get an email when {product} is ready.
-          </DialogDescription>
-        </DialogHeader>
-        {submitted ? (
-          <div className="flex items-center gap-3 py-4">
-            <CheckCircle2 className="h-5 w-5 text-emerald-500" />
-            <p className="text-sm">
-              All set! We'll notify <span className="font-medium">{email}</span>{" "}
-              when we launch.
-            </p>
-          </div>
-        ) : (
-          <form
-            onSubmit={(e) => {
-              e.preventDefault();
-              // TODO: hook up to your API; for now just simulate success
-              setSubmitted(true);
-              console.log("Waitlist:", { product, email });
-            }}
-            className="space-y-3"
-          >
-            <div className="grid gap-2">
-              <Label htmlFor="email">Email</Label>
-              <Input
-                id="email"
-                type="email"
-                required
-                placeholder="you@company.com"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-              />
-            </div>
-            <DialogFooter>
-              <Button type="submit" className="rounded-2xl">
-                Join
-              </Button>
-              <a
-                href={`mailto:hello@ohyeahsoftware.com?subject=Waitlist%20-%20${encodeURIComponent(
-                  product
-                )}`}
-                className="text-sm opacity-70 hover:opacity-100"
-              >
-                or email us
-              </a>
-            </DialogFooter>
-          </form>
-        )}
-      </DialogContent>
-    </Dialog>
-  );
-}
-
-// Single product card
-function ComingSoonCard({
-  name,
-  tagline,
-  bullets,
-  eta,
-  progress,
-  href,
-  badge,
-  icon: IconComponent,
-}: {
-  name: string;
-  tagline: string;
-  bullets: string[];
-  eta: string;
-  progress: number;
-  href?: string;
-  badge?: string;
-  icon: React.ComponentType<{ className?: string }>;
-}) {
-  return (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-100px" }}
-      transition={{ duration: 0.6 }}
-      className="h-full"
-    >
-      <GradientBorder>
-        <Card className="rounded-3xl border-transparent bg-background/60">
-          <CardHeader className="space-y-3">
-            <div className="flex items-center justify-between">
-              <div className="flex items-center gap-3">
-                <div className="grid place-items-center h-11 w-11 rounded-2xl bg-gradient-to-br from-blue-500/20 to-emerald-500/20">
-                  <IconComponent className="h-5 w-5" />
-                </div>
-                <div>
-                  <h3 className="text-xl md:text-2xl font-semibold tracking-tight">
-                    {name}
-                  </h3>
-                  <p className="text-sm text-muted-foreground mt-1">
-                    {tagline}
-                  </p>
-                </div>
-              </div>
-              <div className="flex items-center gap-2">
-                <Badge variant="secondary" className="uppercase tracking-wide">
-                  Coming soon
-                </Badge>
-                {badge ? (
-                  <Badge className="hidden sm:inline-flex">{badge}</Badge>
-                ) : null}
-              </div>
-            </div>
-          </CardHeader>
-          <CardContent className="space-y-5">
-            <ul className="grid gap-2">
-              {bullets.map((b, i) => (
-                <li
-                  key={i}
-                  className="flex items-start gap-2 text-sm text-foreground/85"
-                >
-                  <Sparkles className="h-4 w-4 mt-0.5" /> {b}
-                </li>
-              ))}
-            </ul>
-
-            <div className="flex items-center justify-between text-sm">
-              <div className="flex items-center gap-2 text-muted-foreground">
-                <Clock className="h-4 w-4" /> ETA: {eta}
-              </div>
-              <span className="opacity-70">{progress}%</span>
-            </div>
-            <Progress value={progress} />
-          </CardContent>
-          <CardFooter className="flex items-center justify-between">
-            <WaitlistDialog product={name} />
-            {href ? (
-              <a
-                href={href}
-                className="inline-flex items-center gap-1 text-sm opacity-80 hover:opacity-100"
-              >
-                Preview <ExternalLink className="h-4 w-4" />
-              </a>
-            ) : (
-              <span className="text-sm opacity-60">Private preview</span>
-            )}
-          </CardFooter>
-        </Card>
-      </GradientBorder>
-    </motion.div>
-  );
-}
-
-// Page component
-const ProductsPage: React.FC = () => {
   return (
     <div className="min-h-screen bg-background">
       <Navigation />
-      <section className="relative pt-8 pb-8 overflow-hidden">
-        {/* background accents */}
-        <div className="pointer-events-none absolute -top-24 -left-24 h-72 w-72 rounded-full bg-gradient-to-br from-blue-500/20 to-teal-400/20 blur-3xl" />
-        <div className="pointer-events-none absolute -bottom-32 -right-24 h-80 w-80 rounded-full bg-gradient-to-tr from-indigo-500/15 to-cyan-400/15 blur-3xl" />
 
-        <div className="container mx-auto px-6">
-          <div className="max-w-4xl mx-auto text-center">
-            <motion.h1
-              initial={{ opacity: 0, y: 12 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              className="text-4xl md:text-6xl tracking-tight leading-tight text-foreground drop-shadow-sm"
-            >
-              Our <span className="bg-gradient-primary bg-clip-text text-transparent">Products</span>
-            </motion.h1>
-            <motion.p
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.1, duration: 0.6 }}
-              className="mt-6 text-lg md:text-xl text-muted-foreground/90 leading-relaxed md:leading-8 max-w-3xl mx-auto [text-wrap:balance]"
-            >
-              A peek at what we’re building. Join the waitlist to get early
-              access, shape the roadmap, and hear when each product ships.
-            </motion.p>
+      {/* Hero Section — Full-bleed image, editorial layout */}
+      <section className="relative min-h-[70vh] flex items-center overflow-hidden">
+        {/* Background Image */}
+        <div className="absolute inset-0">
+          <img
+            src={productsHero}
+            alt=""
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-black/85 via-black/70 to-black/40" />
+        </div>
+
+        {/* Hero Content */}
+        <div className="relative z-10 w-full max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 py-20">
+          <div className="max-w-3xl">
+            <p className="text-xs font-semibold uppercase tracking-widest text-white/80 mb-4 font-inter">
+              Our Products
+            </p>
+            <h1 className="text-4xl sm:text-5xl md:text-6xl font-normal font-lucidia tracking-[-0.03em] leading-[1.05] text-white mb-6">
+              Building the future of software
+            </h1>
+            <p className="text-lg sm:text-xl text-white/80 leading-relaxed font-inter font-normal">
+              A peek at what we're building. Join the waitlist to get early access, shape the roadmap, and hear when each product ships.
+            </p>
           </div>
+        </div>
+      </section>
 
-          {/* grid */}
-          <div className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-            <ComingSoonCard
-              name="Fresh Saver"
-              tagline="Save Food, Save Money"
-              bullets={[
-                "Discover surplus food from local restaurants and stores at discounted prices.",
-                "Help reduce food waste while enjoying delicious meals for less.",
-                "Dashboards & weekly insights, Order History, Rewards."
-              ]}
-              eta="Q4 2025"
-              progress={65}
-              icon={Apple}
-            />
+      {/* Products Grid — Clean white editorial */}
+      <section className="py-4 bg-white">
+        <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-px bg-gray-200">
+            {products.map((product) => (
+              <div key={product.name} className="bg-white p-8 lg:p-10 space-y-6">
+                {/* Icon & Badge */}
+                <div className="flex items-start justify-between">
+                  <div className={`w-12 h-12 bg-${product.color}-500/10 rounded-lg flex items-center justify-center`}>
+                    <product.icon className={`w-6 h-6 text-${product.color}-600`} />
+                  </div>
+                  <span className="inline-flex items-center px-2.5 py-1 rounded-md bg-gray-100 text-xs font-medium text-gray-600 uppercase tracking-wide">
+                    Coming Soon
+                  </span>
+                </div>
 
-            <ComingSoonCard
-              name="Edu Manage"
-              tagline="School Management System"
-              bullets={[
-                "School Manager, Mark Attendence & Announcements",
-                "Fee Management, Timetable, Admissions",
-                "Dashboards & weekly insights",
-              ]}
-              eta="Q1 2026"
-              progress={40}
-              icon={GraduationCap}
-            />
+                {/* Title & Tagline */}
+                <div>
+                  <h3 className="text-2xl font-bold font-lucidia tracking-tight text-gray-900 mb-2">
+                    {product.name}
+                  </h3>
+                  <p className="text-sm font-medium text-gray-500">
+                    {product.tagline}
+                  </p>
+                </div>
 
-            <ComingSoonCard
-              name="Mana Bazaar"
-              tagline="India's Marketplace"
-              bullets={[
-                "A modern local marketplace to buy, sell, and discover items nearby.",
-                "Post your products in minutes and connect with trusted buyers and sellers in your city.",
-                "A simple, fast, and community-driven way to trade."
-              ]}
-              eta="Q2 2026"
-              progress={25}
-              icon={ShoppingCart}
-            />
+                {/* Description */}
+                <p className="text-base text-gray-600 leading-relaxed font-inter">
+                  {product.description}
+                </p>
+
+                {/* Features */}
+                <ul className="space-y-2">
+                  {product.features.map((feature, idx) => (
+                    <li key={idx} className="flex items-start gap-2 text-sm text-gray-600 font-inter">
+                      <ArrowRight className="w-4 h-4 mt-0.5 text-gray-400 flex-shrink-0" />
+                      <span>{feature}</span>
+                    </li>
+                  ))}
+                </ul>
+
+                {/* Progress */}
+                <div className="space-y-2">
+                  <div className="flex items-center justify-between text-sm">
+                    <div className="flex items-center gap-2 text-gray-500 font-inter">
+                      <Clock className="w-4 h-4" />
+                      <span>ETA: {product.eta}</span>
+                    </div>
+                    <span className="text-gray-600 font-medium">{product.progress}%</span>
+                  </div>
+                  <div className="w-full h-1.5 rounded-full bg-gray-200 overflow-hidden">
+                    <div
+                      className={`h-full rounded-full bg-${product.color}-500`}
+                      style={{ width: `${product.progress}%` }}
+                    />
+                  </div>
+                </div>
+
+                {/* CTA */}
+                <Button
+                  className="w-full bg-gray-900 text-white hover:bg-gray-800 rounded font-semibold"
+                  asChild
+                >
+                  <Link to="/contact">Get Notified</Link>
+                </Button>
+              </div>
+            ))}
           </div>
+        </div>
+      </section>
 
-          {/* mini-roadmap */}
-          <div className="mt-14 max-w-4xl mx-auto text-center">
-            <p className="text-sm text-muted-foreground">
-              Roadmap next up:{" "}
-              <span className="font-medium text-foreground">Beta invites</span>{" "}
-              → Public Docs → Launch.
+      {/* Roadmap Section */}
+      <section className="py-4 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
+          <div className="text-center">
+            <p className="text-sm text-gray-600 font-inter">
+              <span className="font-semibold text-gray-900">Roadmap:</span> Beta invites → Public docs → Launch
             </p>
           </div>
         </div>
@@ -307,4 +170,4 @@ const ProductsPage: React.FC = () => {
   );
 };
 
-export default ProductsPage;
+export default Products;
