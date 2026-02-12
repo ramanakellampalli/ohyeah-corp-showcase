@@ -19,8 +19,8 @@ const Navigation = () => {
         <div className="flex items-center justify-between h-20">
           {/* Left: Logo and Company Name */}
           <div className="flex items-center">
-            <Link 
-              to="/" 
+            <Link
+              to="/home"
               className="flex items-center gap-4 group transition-all duration-300 hover:scale-105"
             >
               <div className="relative">
@@ -46,11 +46,11 @@ const Navigation = () => {
           
           {/* Center: Navigation Links (hidden on mobile) */}
           <div className="hidden md:flex items-center space-x-2">
-            <Link 
-              to="/" 
+            <Link
+              to="/home"
               className={`relative px-4 py-2 text-sm font-semibold transition-all duration-300 rounded-lg ${
-                isActive('/') 
-                  ? 'text-primary bg-primary/10' 
+                isActive('/home')
+                  ? 'text-primary bg-primary/10'
                   : 'text-muted-foreground hover:text-foreground hover:bg-muted'
               }`}
             >
@@ -122,12 +122,12 @@ const Navigation = () => {
         {isMobileMenuOpen && (
           <div className="md:hidden border-t border-border/50 bg-background/95 backdrop-blur-xl">
             <div className="px-4 py-6 space-y-2">
-              <Link 
-                to="/" 
+              <Link
+                to="/home"
                 onClick={closeMobileMenu}
                 className={`block px-4 py-3 text-base font-semibold rounded-xl transition-all duration-300 ${
-                  isActive('/') 
-                    ? 'text-primary bg-primary/10' 
+                  isActive('/home')
+                    ? 'text-primary bg-primary/10'
                     : 'text-muted-foreground hover:text-foreground hover:bg-muted'
                 }`}
               >

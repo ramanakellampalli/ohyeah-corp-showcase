@@ -26,9 +26,9 @@ const Contact = () => {
 
   // Check if form is valid
   const isFormValid = formData.name.trim() !== "" &&
-                     formData.email.trim() !== "" &&
-                     /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email) &&
-                     formData.message.trim() !== "";
+    formData.email.trim() !== "" &&
+    /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email) &&
+    formData.message.trim() !== "";
 
   const validateField = (name: string, value: string) => {
     switch (name) {
@@ -150,95 +150,100 @@ const Contact = () => {
         <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
             {/* Contact Form */}
-            <div>
-              <div className="mb-8">
-                <h2 className="text-2xl font-bold font-lucidia tracking-tight text-gray-900 mb-2">
-                  Send us a message
+            <div className="max-w-xl">
+              <div className="mb-6">
+                <h2 className="text-xl font-semibold text-gray-900">
+                  Send a message
                 </h2>
-                <p className="text-base text-gray-600 font-inter">
-                  Fill out the form below and we'll get back to you as soon as possible.
+                <p className="text-sm text-gray-600 mt-1">
+                  We’ll get back within 24 hours.
                 </p>
               </div>
 
-              <form onSubmit={handleSubmit} className="space-y-6">
-                <div className="space-y-2">
-                  <Label htmlFor="name" className="text-sm font-medium text-gray-900 font-inter">
-                    Name <span className="text-red-500">*</span>
-                  </Label>
-                  <Input
-                    id="name"
-                    name="name"
-                    value={formData.name}
-                    onChange={handleInputChange}
-                    placeholder="Your full name"
-                    required
-                    disabled={isSubmitting}
-                    className={`rounded-lg border-gray-300 focus:border-primary focus:ring-primary font-inter ${errors.name ? 'border-red-500 focus:border-red-500 focus:ring-red-500' : ''}`}
-                  />
-                  {errors.name && (
-                    <p className="text-sm text-red-500 font-inter">{errors.name}</p>
-                  )}
+              <form onSubmit={handleSubmit} className="space-y-5">
+
+                {/* Grid: Name + Email */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+
+                  <div className="space-y-1">
+                    <Label htmlFor="name" className="text-xs text-gray-600">
+                      Name
+                    </Label>
+                    <Input
+                      id="name"
+                      name="name"
+                      value={formData.name}
+                      onChange={handleInputChange}
+                      placeholder="John Doe"
+                      required
+                      disabled={isSubmitting}
+                      className={`h-10 border-gray-300 focus:ring-1 focus:ring-gray-900 text-sm
+            ${errors.name ? 'border-red-500 focus:ring-red-500' : ''}`}
+                    />
+                    {errors.name && (
+                      <p className="text-xs text-red-500">{errors.name}</p>
+                    )}
+                  </div>
+
+                  <div className="space-y-1">
+                    <Label htmlFor="email" className="text-xs text-gray-600">
+                      Email
+                    </Label>
+                    <Input
+                      id="email"
+                      name="email"
+                      type="email"
+                      value={formData.email}
+                      onChange={handleInputChange}
+                      placeholder="john@company.com"
+                      required
+                      disabled={isSubmitting}
+                      className={`h-10 border-gray-300 focus:ring-1 focus:ring-gray-900 text-sm
+            ${errors.email ? 'border-red-500 focus:ring-red-500' : ''}`}
+                    />
+                    {errors.email && (
+                      <p className="text-xs text-red-500">{errors.email}</p>
+                    )}
+                  </div>
+
                 </div>
 
-                <div className="space-y-2">
-                  <Label htmlFor="email" className="text-sm font-medium text-gray-900 font-inter">
-                    Email <span className="text-red-500">*</span>
-                  </Label>
-                  <Input
-                    id="email"
-                    name="email"
-                    type="email"
-                    value={formData.email}
-                    onChange={handleInputChange}
-                    placeholder="your.email@company.com"
-                    required
-                    disabled={isSubmitting}
-                    className={`rounded-lg border-gray-300 focus:border-primary focus:ring-primary font-inter ${errors.email ? 'border-red-500 focus:border-red-500 focus:ring-red-500' : ''}`}
-                  />
-                  {errors.email && (
-                    <p className="text-sm text-red-500 font-inter">{errors.email}</p>
-                  )}
-                </div>
-
-                <div className="space-y-2">
-                  <Label htmlFor="message" className="text-sm font-medium text-gray-900 font-inter">
-                    Message <span className="text-red-500">*</span>
+                {/* Message Full Width */}
+                <div className="space-y-1">
+                  <Label htmlFor="message" className="text-xs text-gray-600">
+                    Message
                   </Label>
                   <Textarea
                     id="message"
                     name="message"
+                    rows={4}
                     value={formData.message}
                     onChange={handleInputChange}
-                    placeholder="Tell us about your project or how we can help..."
-                    rows={6}
+                    placeholder="Briefly describe your request..."
                     required
                     disabled={isSubmitting}
-                    className={`rounded-lg border-gray-300 focus:border-primary focus:ring-primary resize-none font-inter ${errors.message ? 'border-red-500 focus:border-red-500 focus:ring-red-500' : ''}`}
+                    className={`border-gray-300 focus:ring-1 focus:ring-gray-900 text-sm resize-none
+          ${errors.message ? 'border-red-500 focus:ring-red-500' : ''}`}
                   />
                   {errors.message && (
-                    <p className="text-sm text-red-500 font-inter">{errors.message}</p>
+                    <p className="text-xs text-red-500">{errors.message}</p>
                   )}
                 </div>
 
+                {/* Button */}
                 <Button
                   type="submit"
-                  size="lg"
-                  className="w-full bg-gray-900 text-white hover:bg-gray-800 rounded-lg font-semibold"
                   disabled={!isFormValid || isSubmitting}
+                  className="w-full h-10 bg-gray-900 text-white text-sm hover:bg-gray-800"
                 >
-                  {isSubmitting ? (
-                    'Sending...'
-                  ) : (
-                    <span className="flex items-center justify-center gap-2">
-                      Send Message
-                      <Send className="w-4 h-4" />
-                    </span>
-                  )}
+                  {isSubmitting ? "Sending..." : "Send Message"}
                 </Button>
 
                 <TypingAnimation />
+
               </form>
             </div>
+
 
             {/* Contact Information */}
             <div className="space-y-10">
@@ -251,40 +256,20 @@ const Contact = () => {
                 </p>
               </div>
 
-              <div className="space-y-6">
-                <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0">
-                    <Mail className="w-6 h-6 text-primary" />
-                  </div>
-                  <div>
-                    <h3 className="text-base font-bold text-gray-900 mb-1 font-lucidia">Email</h3>
-                    <p className="text-sm text-gray-600 font-inter">info@ohyeahsaas.com</p>
-                  </div>
+              <div className="flex flex-wrap items-center gap-6 text-sm text-gray-600">
+                <div className="flex items-center gap-2">
+                  <Mail className="w-4 h-4" />
+                  info@ohyeahsaas.com
                 </div>
 
-                <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0">
-                    <Phone className="w-6 h-6 text-primary" />
-                  </div>
-                  <div>
-                    <h3 className="text-base font-bold text-gray-900 mb-1 font-lucidia">Phone</h3>
-                    <p className="text-sm text-gray-600 font-inter">+1 (555) 123-4567</p>
-                    <p className="text-sm text-gray-600 font-inter">+1 (555) 987-6543</p>
-                  </div>
+                <div className="flex items-center gap-2">
+                  <Phone className="w-4 h-4" />
+                  +1 (555) 123-4567
                 </div>
 
-                <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0">
-                    <MapPin className="w-6 h-6 text-primary" />
-                  </div>
-                  <div>
-                    <h3 className="text-base font-bold text-gray-900 mb-1 font-lucidia">Office</h3>
-                    <p className="text-sm text-gray-600 font-inter">
-                      123 Tech Street<br />
-                      Innovation District<br />
-                      San Francisco, CA 94105
-                    </p>
-                  </div>
+                <div className="flex items-center gap-2">
+                  <MapPin className="w-4 h-4" />
+                  San Francisco, CA
                 </div>
               </div>
 
