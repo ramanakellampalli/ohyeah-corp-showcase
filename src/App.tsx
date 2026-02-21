@@ -8,7 +8,10 @@ import About from "./pages/About";
 import Contact from "./pages/Contact";
 import NotFound from "./pages/NotFound";
 import ProductsPage from "./pages/Products";
+import PrivacyLayout from "./pages/PrivacyLayout";
+import PrivacyLanding from "./pages/PrivacyLanding";
 import MonsoonPrivacyPolicy from "./privacy-policies/Monsoon";
+import BillBuddyPrivacyPolicy from "./privacy-policies/BillBuddy";
 
 const queryClient = new QueryClient();
 
@@ -17,14 +20,18 @@ const App = () => (
     <TooltipProvider>
       <Toaster />
       <Sonner />
-      <BrowserRouter>
+      <BrowserRouter future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
         <Routes>
           <Route path="/" element={<Navigate to="/home" replace />} />
           <Route path="/home" element={<Home />} />
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/products" element={<ProductsPage />} />
-          <Route path="/privacy" element={<MonsoonPrivacyPolicy />} />
+          <Route path="/privacy" element={<PrivacyLayout />}>
+            <Route index element={<PrivacyLanding />} />
+            <Route path="monsoon" element={<MonsoonPrivacyPolicy />} />
+            <Route path="bill-buddy" element={<BillBuddyPrivacyPolicy />} />
+          </Route>
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
