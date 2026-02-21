@@ -12,6 +12,7 @@ import PrivacyLayout from "./pages/PrivacyLayout";
 import PrivacyLanding from "./pages/PrivacyLanding";
 import MonsoonPrivacyPolicy from "./privacy-policies/Monsoon";
 import BillBuddyPrivacyPolicy from "./privacy-policies/BillBuddy";
+import BillBuddyDeleteAccount from "./privacy-policies/BillBuddyDeleteAccount";
 
 const queryClient = new QueryClient();
 
@@ -29,8 +30,11 @@ const App = () => (
           <Route path="/products" element={<ProductsPage />} />
           <Route path="/privacy" element={<PrivacyLayout />}>
             <Route index element={<PrivacyLanding />} />
-            <Route path="monsoon" element={<MonsoonPrivacyPolicy />} />
-            <Route path="bill-buddy" element={<BillBuddyPrivacyPolicy />} />
+            <Route path="monsoon" element={<Navigate to="/privacy/monsoon/privacy" replace />} />
+            <Route path="monsoon/privacy" element={<MonsoonPrivacyPolicy />} />
+            <Route path="bill-buddy" element={<Navigate to="/privacy/bill-buddy/privacy" replace />} />
+            <Route path="bill-buddy/privacy" element={<BillBuddyPrivacyPolicy />} />
+            <Route path="bill-buddy/delete-account" element={<BillBuddyDeleteAccount />} />
           </Route>
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />

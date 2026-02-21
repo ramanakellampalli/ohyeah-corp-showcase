@@ -5,14 +5,14 @@ const policies = [
     label: "Monsoon Dhara",
     description:
       "Privacy policy for the Monsoon Dhara weather app. No personal data collected.",
-    path: "/privacy/monsoon",
+    path: "/privacy/monsoon/privacy",
     gradient: "from-blue-600 to-cyan-500",
   },
   {
     label: "Bill Buddy",
     description:
       "Privacy policy for the Bill Buddy expense tracking app. Data stored securely via Firebase.",
-    path: "/privacy/bill-buddy",
+    path: "/privacy/bill-buddy/privacy",
     gradient: "from-orange-500 to-amber-400",
   },
 ];

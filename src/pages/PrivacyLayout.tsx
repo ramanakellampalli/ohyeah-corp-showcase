@@ -1,14 +1,44 @@
-import { useState } from "react";
-import { NavLink, Outlet } from "react-router-dom";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { useState, useEffect } from "react";
+import { NavLink, Outlet, useLocation } from "react-router-dom";
+import { ChevronLeft, ChevronRight, ChevronDown, ChevronUp } from "lucide-react";
 
-const policies = [
-  { label: "Monsoon Dhara", path: "/privacy/monsoon" },
-  { label: "Bill Buddy", path: "/privacy/bill-buddy" },
+const apps = [
+  {
+    id: "bill-buddy",
+    label: "Bill Buddy",
+    items: [
+      { label: "Privacy Policy", path: "/privacy/bill-buddy/privacy" },
+      { label: "Delete Account", path: "/privacy/bill-buddy/delete-account" },
+    ],
+  },
+  {
+    id: "monsoon",
+    label: "Monsoon Dhara",
+    items: [{ label: "Privacy Policy", path: "/privacy/monsoon/privacy" }],
+  },
 ];
 
 export default function PrivacyLayout() {
   const [collapsed, setCollapsed] = useState(false);
+  const [openPanels, setOpenPanels] = useState<Set<string>>(new Set());
+  const location = useLocation();
+
+  // Auto-open the panel whose routes match the current path
+  useEffect(() => {
+    apps.forEach((app) => {
+      if (location.pathname.startsWith(`/privacy/${app.id}`)) {
+        setOpenPanels((prev) => new Set([...prev, app.id]));
+      }
+    });
+  }, [location.pathname]);
+
+  const togglePanel = (id: string) => {
+    setOpenPanels((prev) => {
+      const next = new Set(prev);
+      next.has(id) ? next.delete(id) : next.add(id);
+      return next;
+    });
+  };
 
   return (
     <div className="min-h-screen bg-background flex">
@@ -19,6 +49,7 @@ export default function PrivacyLayout() {
         }`}
       >
         <div className="sticky top-0 pt-8">
+          {/* Sidebar header with collapse toggle */}
           <div
             className={`flex items-center px-3 py-3 ${
               collapsed ? "justify-center" : "justify-between"
@@ -26,7 +57,7 @@ export default function PrivacyLayout() {
           >
             {!collapsed && (
               <span className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
-                Policies
+                Apps
               </span>
             )}
             <button
@@ -42,23 +73,58 @@ export default function PrivacyLayout() {
             </button>
           </div>
 
+          {/* App accordion panels */}
           {!collapsed && (
             <nav className="mt-2 px-2 space-y-1">
-              {policies.map((p) => (
-                <NavLink
-                  key={p.path}
-                  to={p.path}
-                  className={({ isActive }) =>
-                    `block px-3 py-2 rounded-lg text-sm transition-colors ${
-                      isActive
-                        ? "bg-primary/10 text-primary font-medium"
-                        : "text-muted-foreground hover:bg-muted/50 hover:text-foreground"
-                    }`
-                  }
-                >
-                  {p.label}
-                </NavLink>
-              ))}
+              {apps.map((app) => {
+                const isOpen = openPanels.has(app.id);
+                const isAnyChildActive = app.items.some(
+                  (item) => location.pathname === item.path
+                );
+
+                return (
+                  <div key={app.id}>
+                    {/* App panel header */}
+                    <button
+                      onClick={() => togglePanel(app.id)}
+                      className={`w-full flex items-center justify-between px-3 py-2 rounded-lg text-sm transition-colors ${
+                        isAnyChildActive
+                          ? "text-foreground font-medium"
+                          : "text-muted-foreground hover:bg-muted/50 hover:text-foreground"
+                      }`}
+                    >
+                      <span>{app.label}</span>
+                      {isOpen ? (
+                        <ChevronUp size={14} />
+                      ) : (
+                        <ChevronDown size={14} />
+                      )}
+                    </button>
+
+                    {/* Sub-items */}
+                    {isOpen && (
+                      <div className="ml-3 mt-0.5 space-y-0.5 border-l border-border/50 pl-2">
+                        {app.items.map((item) => (
+                          <NavLink
+                            key={item.path}
+                            to={item.path}
+                            end
+                            className={({ isActive }) =>
+                              `block px-2 py-1.5 rounded-md text-sm transition-colors ${
+                                isActive
+                                  ? "bg-primary/10 text-primary font-medium"
+                                  : "text-muted-foreground hover:bg-muted/50 hover:text-foreground"
+                              }`
+                            }
+                          >
+                            {item.label}
+                          </NavLink>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+                );
+              })}
             </nav>
           )}
         </div>
