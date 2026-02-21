@@ -1,7 +1,6 @@
 export default function MonsoonPrivacyPolicy() {
   return (
-    <div className="min-h-screen bg-background">
-      <div className="max-w-3xl mx-auto px-6 py-16">
+    <div className="max-w-3xl mx-auto px-6 py-16">
         {/* Header */}
         <header className="text-center mb-10">
           <h1 className="text-4xl md:text-5xl font-extrabold tracking-tight">
@@ -146,6 +145,5 @@ export default function MonsoonPrivacyPolicy() {
           </a>
         </p>
       </div>
-    </div>
   );
 }
