@@ -7,14 +7,14 @@ const apps = [
     id: "bill-buddy",
     label: "Bill Buddy",
     items: [
-      { label: "Privacy Policy", path: "/privacy/bill-buddy/privacy" },
+      { label: "Privacy Policy", path: "/privacy/bill-buddy/policy" },
       { label: "Delete Account", path: "/privacy/bill-buddy/delete-account" },
     ],
   },
   {
     id: "monsoon",
     label: "Monsoon Dhara",
-    items: [{ label: "Privacy Policy", path: "/privacy/monsoon/privacy" }],
+    items: [{ label: "Privacy Policy", path: "/privacy/monsoon/policy" }],
   },
 ];
 
