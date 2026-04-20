@@ -15,6 +15,20 @@ const policies = [
     path: "/privacy/bill-buddy/policy",
     gradient: "from-orange-500 to-amber-400",
   },
+  {
+    label: "SkipQ Vendor",
+    description:
+      "Privacy policy for the SkipQ Vendor app. Covers order data, business details, and real-time order delivery via Ably.",
+    path: "/privacy/skipq-vendor/policy",
+    gradient: "from-orange-500 to-amber-400",
+  },
+  {
+    label: "SkipQ",
+    description:
+      "Privacy policy for the SkipQ student app. Covers campus email, order history, payments, and biometric login.",
+    path: "/privacy/skipq/policy",
+    gradient: "from-orange-500 to-amber-400",
+  },
 ];
 
 export default function PrivacyLanding() {

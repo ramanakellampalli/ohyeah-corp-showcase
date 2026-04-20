@@ -13,6 +13,8 @@ import PrivacyLanding from "./pages/PrivacyLanding";
 import MonsoonPrivacyPolicy from "./privacy-policies/Monsoon";
 import BillBuddyPrivacyPolicy from "./privacy-policies/BillBuddy";
 import BillBuddyDeleteAccount from "./privacy-policies/BillBuddyDeleteAccount";
+import SkipQVendorPrivacyPolicy from "./privacy-policies/SkipQVendor";
+import SkipQCustomerPrivacyPolicy from "./privacy-policies/SkipQCustomer";
 
 const queryClient = new QueryClient();
 
@@ -35,6 +37,10 @@ const App = () => (
             <Route path="bill-buddy" element={<Navigate to="/privacy/bill-buddy/policy" replace />} />
             <Route path="bill-buddy/policy" element={<BillBuddyPrivacyPolicy />} />
             <Route path="bill-buddy/delete-account" element={<BillBuddyDeleteAccount />} />
+            <Route path="skipq-vendor" element={<Navigate to="/privacy/skipq-vendor/policy" replace />} />
+            <Route path="skipq-vendor/policy" element={<SkipQVendorPrivacyPolicy />} />
+            <Route path="skipq" element={<Navigate to="/privacy/skipq/policy" replace />} />
+            <Route path="skipq/policy" element={<SkipQCustomerPrivacyPolicy />} />
           </Route>
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
