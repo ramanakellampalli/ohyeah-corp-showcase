@@ -19,12 +19,18 @@ const apps = [
   {
     id: "skipq-vendor",
     label: "SkipQ Vendor",
-    items: [{ label: "Privacy Policy", path: "/privacy/skipq-vendor/policy" }],
+    items: [
+      { label: "Privacy Policy", path: "/privacy/skipq-vendor/policy" },
+      { label: "Delete Account", path: "/privacy/skipq-vendor/delete-account" },
+    ],
   },
   {
     id: "skipq",
     label: "SkipQ",
-    items: [{ label: "Privacy Policy", path: "/privacy/skipq/policy" }],
+    items: [
+      { label: "Privacy Policy", path: "/privacy/skipq/policy" },
+      { label: "Delete Account", path: "/privacy/skipq/delete-account" },
+    ],
   },
 ];
 
