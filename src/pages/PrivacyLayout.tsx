@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { NavLink, Outlet, useLocation } from "react-router-dom";
-import { ChevronLeft, ChevronRight, ChevronDown, ChevronUp } from "lucide-react";
+import { PanelLeftOpen, PanelLeftClose, ChevronDown, ChevronUp } from "lucide-react";
 
 const apps = [
   {
@@ -76,9 +76,9 @@ export default function PrivacyLayout() {
               aria-label={collapsed ? "Expand sidebar" : "Collapse sidebar"}
             >
               {collapsed ? (
-                <ChevronRight size={16} />
+                <PanelLeftOpen size={16} />
               ) : (
-                <ChevronLeft size={16} />
+                <PanelLeftClose size={16} />
               )}
             </button>
           </div>
