@@ -29,7 +29,7 @@ const apps = [
 ];
 
 export default function PrivacyLayout() {
-  const [collapsed, setCollapsed] = useState(false);
+  const [collapsed, setCollapsed] = useState(true);
   const [openPanels, setOpenPanels] = useState<Set<string>>(new Set());
   const location = useLocation();
 
