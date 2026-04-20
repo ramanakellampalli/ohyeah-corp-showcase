@@ -16,6 +16,16 @@ const apps = [
     label: "Monsoon Dhara",
     items: [{ label: "Privacy Policy", path: "/privacy/monsoon/policy" }],
   },
+  {
+    id: "skipq-vendor",
+    label: "SkipQ Vendor",
+    items: [{ label: "Privacy Policy", path: "/privacy/skipq-vendor/policy" }],
+  },
+  {
+    id: "skipq",
+    label: "SkipQ",
+    items: [{ label: "Privacy Policy", path: "/privacy/skipq/policy" }],
+  },
 ];
 
 export default function PrivacyLayout() {
