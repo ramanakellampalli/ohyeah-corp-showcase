@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { NavLink, Outlet, useLocation } from "react-router-dom";
-import { ChevronLeft, ChevronRight, ChevronDown, ChevronUp } from "lucide-react";
+import { PanelLeftOpen, PanelLeftClose, ChevronDown, ChevronUp } from "lucide-react";
 
 const apps = [
   {
@@ -16,10 +16,26 @@ const apps = [
     label: "Monsoon Dhara",
     items: [{ label: "Privacy Policy", path: "/privacy/monsoon/policy" }],
   },
+  {
+    id: "skipq-vendor",
+    label: "SkipQ Vendor",
+    items: [
+      { label: "Privacy Policy", path: "/privacy/skipq-vendor/policy" },
+      { label: "Delete Account", path: "/privacy/skipq-vendor/delete-account" },
+    ],
+  },
+  {
+    id: "skipq",
+    label: "SkipQ",
+    items: [
+      { label: "Privacy Policy", path: "/privacy/skipq/policy" },
+      { label: "Delete Account", path: "/privacy/skipq/delete-account" },
+    ],
+  },
 ];
 
 export default function PrivacyLayout() {
-  const [collapsed, setCollapsed] = useState(false);
+  const [collapsed, setCollapsed] = useState(true);
   const [openPanels, setOpenPanels] = useState<Set<string>>(new Set());
   const location = useLocation();
 
@@ -66,9 +82,9 @@ export default function PrivacyLayout() {
               aria-label={collapsed ? "Expand sidebar" : "Collapse sidebar"}
             >
               {collapsed ? (
-                <ChevronRight size={16} />
+                <PanelLeftOpen size={16} />
               ) : (
-                <ChevronLeft size={16} />
+                <PanelLeftClose size={16} />
               )}
             </button>
           </div>
