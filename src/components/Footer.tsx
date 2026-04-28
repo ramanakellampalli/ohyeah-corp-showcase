@@ -3,61 +3,52 @@ import { Linkedin, Mail } from "lucide-react";
 
 const Footer = () => {
   return (
-    <footer className="bg-gradient-to-b from-gray-900 to-gray-800">
-      <div className="max-w-7xl mx-auto px-4 py-8">
-        
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-10">
-          <div className="md:col-span-2">
-            <h3 className="text-white font-bold text-xl mb-6">OhYeah Software Pvt Ltd</h3>
-            <p className="text-gray-300 mb-4 leading-relaxed">Simplifying Business Software for the Next Generation. Fast, reliable, and built for scale.</p>
-          </div>
-          
-          <div>
-            <h4 className="text-white font-bold uppercase text-xs tracking-widest mb-6">Quick Links</h4>
-            <div className="space-y-4">
-              <Link to="/" className="block text-gray-400 hover:text-blue-400 transition-colors duration-200">
-                Home
-              </Link>
-              <Link to="/about" className="block text-gray-400 hover:text-blue-400 transition-colors duration-200">
-                About
-              </Link>
-              <Link to="/products" className="block text-gray-400 hover:text-blue-400 transition-colors duration-200">
-                Products
-              </Link>
-              <Link to="/contact" className="block text-gray-400 hover:text-blue-400 transition-colors duration-200">
-                Contact
-              </Link>
-            </div>
-          </div>
-          
-          <div>
-            <h4 className="text-white font-bold uppercase text-xs tracking-widest mb-6">Connect</h4>
-            <div className="space-y-4">
-              <a 
-                href="https://www.linkedin.com/company/ohyeah-software-pvt-ltd/" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="flex items-center text-gray-400 hover:text-blue-400 transition-all duration-200 group cursor-pointer"
-              >
-                <Linkedin className="w-5 h-5 mr-3 group-hover:scale-110 transition-transform duration-200" />
-                LinkedIn
-              </a>
-              <a
-                href="mailto:ohyeahsoftwarepvtlmtd@gmail.com"
-                className="flex items-center text-gray-400 hover:text-blue-400 transition-all duration-200 group cursor-pointer"
-              >
-                <Mail className="w-5 h-5 mr-3 group-hover:scale-110 transition-transform duration-200" />
-                Email
-              </a>
-            </div>
-          </div>
+    <footer className="border-t border-gray-200 bg-white">
+      <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 h-16 flex items-center justify-between gap-6">
+
+        <span className="text-sm font-semibold text-gray-900 whitespace-nowrap">
+          OhYeah Software
+        </span>
+
+        <nav className="hidden sm:flex items-center gap-6">
+          {[
+            { to: "/home", label: "Home" },
+            { to: "/about", label: "About" },
+            { to: "/products", label: "Products" },
+            { to: "/contact", label: "Contact" },
+          ].map(({ to, label }) => (
+            <Link
+              key={to}
+              to={to}
+              className="text-sm text-gray-500 hover:text-gray-900 transition-colors"
+            >
+              {label}
+            </Link>
+          ))}
+        </nav>
+
+        <div className="flex items-center gap-4">
+          <a
+            href="https://www.linkedin.com/company/ohyeah-software-pvt-ltd/"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="LinkedIn"
+            className="text-gray-400 hover:text-gray-900 transition-colors"
+          >
+            <Linkedin className="w-4 h-4" />
+          </a>
+          <a
+            href="mailto:ohyeahsoftwarepvtlmtd@gmail.com"
+            aria-label="Email"
+            className="text-gray-400 hover:text-gray-900 transition-colors"
+          >
+            <Mail className="w-4 h-4" />
+          </a>
+          <span className="text-xs text-gray-400 hidden md:inline">
+            © {new Date().getFullYear()} OhYeah Software Pvt Ltd
+          </span>
         </div>
-        
-        <div className="mt-4 pt-4 border-t border-gray-700 text-center">
-          <p className="text-gray-400">
-            © {new Date().getFullYear()} OhYeah Software Pvt Ltd. All rights reserved.
-          </p>
-        </div>
+
       </div>
     </footer>
   );
