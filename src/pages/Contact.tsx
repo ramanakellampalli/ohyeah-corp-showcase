@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
-import { Mail, MapPin, Phone, Send } from "lucide-react";
+import { Mail, MapPin, Send } from "lucide-react";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { useToast } from "@/hooks/use-toast";
@@ -101,7 +101,6 @@ const Contact = () => {
         setFormData({ name: "", email: "", message: "" });
         setErrors({ name: "", email: "", message: "" });
       } catch (error) {
-        console.error('Failed to send email:', error);
         toast({
           title: "Error",
           description: error instanceof Error ? error.message : "Failed to send message. Please try again or contact us directly.",
@@ -125,6 +124,7 @@ const Contact = () => {
             src={contactHero}
             alt=""
             className="w-full h-full object-cover"
+            fetchPriority="high"
           />
           <div className="absolute inset-0 bg-gradient-to-r from-black/85 via-black/70 to-black/40" />
         </div>
@@ -161,6 +161,7 @@ const Contact = () => {
               </div>
 
               <form onSubmit={handleSubmit} className="space-y-5">
+                <fieldset disabled={isSubmitting} className="contents">
 
                 {/* Grid: Name + Email */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -240,7 +241,7 @@ const Contact = () => {
                 </Button>
 
                 <TypingAnimation />
-
+                </fieldset>
               </form>
             </div>
 
@@ -259,17 +260,12 @@ const Contact = () => {
               <div className="flex flex-wrap items-center gap-6 text-sm text-gray-600">
                 <div className="flex items-center gap-2">
                   <Mail className="w-4 h-4" />
-                  info@ohyeahsaas.com
-                </div>
-
-                <div className="flex items-center gap-2">
-                  <Phone className="w-4 h-4" />
-                  +1 (555) 123-4567
+                  ohyeahsoftwarepvtlmtd@gmail.com
                 </div>
 
                 <div className="flex items-center gap-2">
                   <MapPin className="w-4 h-4" />
-                  San Francisco, CA
+                  Guntur, Andhra Pradesh, India
                 </div>
               </div>
 

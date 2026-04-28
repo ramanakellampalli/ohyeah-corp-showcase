@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Linkedin, Twitter, Github, Mail } from "lucide-react";
+import { Linkedin, Mail } from "lucide-react";
 
 const Footer = () => {
   return (
@@ -42,21 +42,7 @@ const Footer = () => {
                 <Linkedin className="w-5 h-5 mr-3 group-hover:scale-110 transition-transform duration-200" />
                 LinkedIn
               </a>
-              <a 
-                href="#"
-                className="flex items-center text-gray-400 hover:text-blue-400 transition-all duration-200 group cursor-pointer"
-              >
-                <Twitter className="w-5 h-5 mr-3 group-hover:scale-110 transition-transform duration-200" />
-                Twitter
-              </a>
-              <a 
-                href="#"
-                className="flex items-center text-gray-400 hover:text-blue-400 transition-all duration-200 group cursor-pointer"
-              >
-                <Github className="w-5 h-5 mr-3 group-hover:scale-110 transition-transform duration-200" />
-                GitHub
-              </a>
-              <a 
+              <a
                 href="mailto:ohyeahsoftwarepvtlmtd@gmail.com"
                 className="flex items-center text-gray-400 hover:text-blue-400 transition-all duration-200 group cursor-pointer"
               >

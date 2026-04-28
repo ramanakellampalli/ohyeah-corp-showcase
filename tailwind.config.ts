@@ -60,7 +60,8 @@ export default {
 			},
 			fontFamily: {
 				inter: ['Inter', 'sans-serif'],
-				sora: ['Sora', 'sans-serif']
+				sora: ['Sora', 'sans-serif'],
+				lucidia: ['"Playfair Display"', 'Georgia', 'serif'],
 			},
 			borderRadius: {
 				lg: 'var(--radius)',
