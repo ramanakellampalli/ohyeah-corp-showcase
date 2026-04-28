@@ -1,31 +1,13 @@
-import { Link } from "react-router-dom";
 import { Linkedin, Mail } from "lucide-react";
 
 const Footer = () => {
   return (
     <footer className="border-t border-gray-200 bg-white">
-      <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 h-16 flex items-center justify-between gap-6">
+      <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 h-16 flex items-center justify-between">
 
-        <span className="text-sm font-semibold text-gray-900 whitespace-nowrap">
-          OhYeah Software
+        <span className="text-sm text-gray-400">
+          © {new Date().getFullYear()} OhYeah Software Pvt Ltd
         </span>
-
-        <nav className="hidden sm:flex items-center gap-6">
-          {[
-            { to: "/home", label: "Home" },
-            { to: "/about", label: "About" },
-            { to: "/products", label: "Products" },
-            { to: "/contact", label: "Contact" },
-          ].map(({ to, label }) => (
-            <Link
-              key={to}
-              to={to}
-              className="text-sm text-gray-500 hover:text-gray-900 transition-colors"
-            >
-              {label}
-            </Link>
-          ))}
-        </nav>
 
         <div className="flex items-center gap-4">
           <a
@@ -44,9 +26,6 @@ const Footer = () => {
           >
             <Mail className="w-4 h-4" />
           </a>
-          <span className="text-xs text-gray-400 hidden md:inline">
-            © {new Date().getFullYear()} OhYeah Software Pvt Ltd
-          </span>
         </div>
 
       </div>
