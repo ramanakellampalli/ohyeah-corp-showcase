@@ -1,4 +1,4 @@
-import { Linkedin, Mail } from "lucide-react";
+import { Linkedin, Mail, Instagram } from "lucide-react";
 
 const Footer = () => {
   return (
@@ -10,6 +10,15 @@ const Footer = () => {
         </span>
 
         <div className="flex items-center gap-4">
+          <a
+            href="https://www.instagram.com/ohyeahpvtltd/"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Instagram"
+            className="text-gray-400 hover:text-gray-900 transition-colors"
+          >
+            <Instagram className="w-4 h-4" />
+          </a>
           <a
             href="https://www.linkedin.com/company/ohyeah-software-pvt-ltd/"
             target="_blank"
