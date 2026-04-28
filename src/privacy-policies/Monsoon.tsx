@@ -133,7 +133,7 @@ export default function MonsoonPrivacyPolicy() {
           </section>
 
           <div className="mt-8 text-sm text-muted-foreground">
-            Last updated: September 3, 2025
+            Last updated: April 27, 2026
           </div>
         </main>
 

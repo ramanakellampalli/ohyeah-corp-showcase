@@ -18,6 +18,7 @@ const Home = () => {
             src={heroBg}
             alt=""
             className="w-full h-full object-cover"
+            fetchPriority="high"
           />
           {/* Dark overlay for text readability */}
           <div className="absolute inset-0 bg-gradient-to-r from-black/85 via-black/70 to-black/50" />
@@ -60,13 +61,13 @@ const Home = () => {
               <div className="bg-white rounded-lg shadow-2xl p-8 w-full max-w-sm space-y-6">
                 <div className="space-y-2">
                   <p className="text-xs font-semibold uppercase tracking-widest text-gray-500 font-inter">
-                    Explore
+                    Live on Play Store
                   </p>
                   <h3 className="text-xl font-bold text-gray-900 font-lucidia tracking-tight">
-                    Discover Our Products
+                    Our Products
                   </h3>
                   <p className="text-sm text-gray-600 leading-relaxed font-inter">
-                    From food sustainability to education management — see what we're building next.
+                    Real apps, live in the world — download them today.
                   </p>
                 </div>
                 <div className="space-y-3">
@@ -74,21 +75,14 @@ const Home = () => {
                     to="/products"
                     className="flex items-center justify-between p-3 bg-gray-50 hover:bg-gray-100 rounded transition-colors group"
                   >
-                    <span className="text-sm font-medium text-gray-800">Fresh Saver</span>
+                    <span className="text-sm font-medium text-gray-800">SkipQ</span>
                     <ArrowRight className="w-4 h-4 text-gray-400 group-hover:text-gray-800 group-hover:translate-x-0.5 transition-all" />
                   </Link>
                   <Link
                     to="/products"
                     className="flex items-center justify-between p-3 bg-gray-50 hover:bg-gray-100 rounded transition-colors group"
                   >
-                    <span className="text-sm font-medium text-gray-800">Edu Manage</span>
-                    <ArrowRight className="w-4 h-4 text-gray-400 group-hover:text-gray-800 group-hover:translate-x-0.5 transition-all" />
-                  </Link>
-                  <Link
-                    to="/products"
-                    className="flex items-center justify-between p-3 bg-gray-50 hover:bg-gray-100 rounded transition-colors group"
-                  >
-                    <span className="text-sm font-medium text-gray-800">Mana Bazaar</span>
+                    <span className="text-sm font-medium text-gray-800">Bill Buddy</span>
                     <ArrowRight className="w-4 h-4 text-gray-400 group-hover:text-gray-800 group-hover:translate-x-0.5 transition-all" />
                   </Link>
                 </div>
