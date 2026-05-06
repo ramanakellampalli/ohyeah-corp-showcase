@@ -62,7 +62,7 @@ const Products = () => {
         "Case history timeline — full audit trail of every status update",
         "Multi-case dashboard — track petitions, green cards, and renewals side by side",
       ],
-      status: "In Development",
+      status: "Releasing Soon",
       statusColor: "amber",
       url: "https://clario.ohyeahsaas.com",
       cta: "Open Web App",
