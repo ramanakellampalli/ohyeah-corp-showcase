@@ -4,6 +4,20 @@ import Footer from "@/components/Footer";
 import productsHero from "@/assets/products-hero.jpg";
 import skipqLogo from "@/assets/skipq.png";
 import billbuddyLogo from "@/assets/billbuddy.png";
+import clarioLogo from "@/assets/clario.png";
+
+const statusStyles: Record<string, { container: string; dot: string; text: string }> = {
+  green: {
+    container: "bg-green-50 text-green-700",
+    dot: "bg-green-500",
+    text: "text-green-700",
+  },
+  amber: {
+    container: "bg-amber-50 text-amber-700",
+    dot: "bg-amber-500",
+    text: "text-amber-700",
+  },
+};
 
 const Products = () => {
   const products = [
@@ -17,7 +31,9 @@ const Products = () => {
         "Biometric login with Face ID / fingerprint support",
       ],
       status: "Live on Play Store",
-      playStore: "https://play.google.com/store/apps/details?id=com.skipqcustomer",
+      statusColor: "green",
+      url: "https://play.google.com/store/apps/details?id=com.skipqcustomer",
+      cta: "View on Play Store",
       logo: skipqLogo,
       accent: "#F97316",
     },
@@ -31,9 +47,27 @@ const Products = () => {
         "Monthly budget limits with live spend tracking per category",
       ],
       status: "Live on Play Store",
-      playStore: "https://play.google.com/store/apps/details?id=com.ohyeah.smartbillreminder",
+      statusColor: "green",
+      url: "https://play.google.com/store/apps/details?id=com.ohyeah.smartbillreminder",
+      cta: "View on Play Store",
       logo: billbuddyLogo,
       accent: "#3B82F6",
+    },
+    {
+      name: "Clario",
+      tagline: "Clarity for every USCIS case update.",
+      description: "Clario lets you track USCIS immigration cases in one place. Add receipt numbers, watch status changes in real time, and review the full history timeline — so you're never in the dark about your petition.",
+      features: [
+        "Live status sync — detects USCIS changes automatically",
+        "Case history timeline — full audit trail of every status update",
+        "Multi-case dashboard — track petitions, green cards, and renewals side by side",
+      ],
+      status: "In Development",
+      statusColor: "amber",
+      url: "https://clario.ohyeahsaas.com",
+      cta: "Open Web App",
+      logo: clarioLogo,
+      accent: "#0EA5E9",
     },
   ];
 
@@ -83,8 +117,8 @@ const Products = () => {
                     alt={`${product.name} logo`}
                     className="w-16 h-16 rounded-2xl object-cover shadow-sm"
                   />
-                  <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-green-50 text-xs font-medium text-green-700 uppercase tracking-wide">
-                    <span className="w-1.5 h-1.5 rounded-full bg-green-500 inline-block" />
+                  <span className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md text-xs font-medium uppercase tracking-wide ${statusStyles[product.statusColor].container}`}>
+                    <span className={`w-1.5 h-1.5 rounded-full inline-block ${statusStyles[product.statusColor].dot}`} />
                     {product.status}
                   </span>
                 </div>
@@ -116,12 +150,12 @@ const Products = () => {
 
                 {/* CTA */}
                 <a
-                  href={product.playStore}
+                  href={product.url}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 w-full justify-center bg-gray-900 text-white hover:bg-gray-800 rounded px-4 py-2.5 text-sm font-semibold transition-colors"
                 >
-                  View on Play Store
+                  {product.cta}
                   <ExternalLink className="w-4 h-4" />
                 </a>
               </div>
