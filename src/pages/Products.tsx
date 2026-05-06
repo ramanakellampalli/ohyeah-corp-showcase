@@ -107,7 +107,7 @@ const Products = () => {
       {/* Products Grid — Clean white editorial */}
       <section className="py-4 bg-white">
         <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-px bg-gray-200">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-px bg-gray-200">
             {products.map((product) => (
               <div key={product.name} className="bg-white p-8 lg:p-12 space-y-6">
                 {/* Logo & Badge */}
