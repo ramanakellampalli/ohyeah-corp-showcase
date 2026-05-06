@@ -1,9 +1,12 @@
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Shield, Zap, Users, Timer, TrendingUp, Rocket, BarChart3 } from "lucide-react";
+import { ArrowRight, Shield, Zap, Users, Timer } from "lucide-react";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import heroBg from "@/assets/hero-bg.jpg";
+import skipqLogo from "@/assets/skipq.png";
+import billbuddyLogo from "@/assets/billbuddy.png";
+import clarioLogo from "@/assets/clario.png";
 
 const Home = () => {
   return (
@@ -61,7 +64,7 @@ const Home = () => {
               <div className="bg-white rounded-lg shadow-2xl p-8 w-full max-w-sm space-y-6">
                 <div className="space-y-2">
                   <p className="text-xs font-semibold uppercase tracking-widest text-gray-500 font-inter">
-                    Live on Play Store
+                    3 Products
                   </p>
                   <h3 className="text-xl font-bold text-gray-900 font-lucidia tracking-tight">
                     Our Products
@@ -71,20 +74,26 @@ const Home = () => {
                   </p>
                 </div>
                 <div className="space-y-3">
-                  <Link
-                    to="/products"
-                    className="flex items-center justify-between p-3 bg-gray-50 hover:bg-gray-100 rounded transition-colors group"
-                  >
-                    <span className="text-sm font-medium text-gray-800">SkipQ</span>
-                    <ArrowRight className="w-4 h-4 text-gray-400 group-hover:text-gray-800 group-hover:translate-x-0.5 transition-all" />
-                  </Link>
-                  <Link
-                    to="/products"
-                    className="flex items-center justify-between p-3 bg-gray-50 hover:bg-gray-100 rounded transition-colors group"
-                  >
-                    <span className="text-sm font-medium text-gray-800">Bill Buddy</span>
-                    <ArrowRight className="w-4 h-4 text-gray-400 group-hover:text-gray-800 group-hover:translate-x-0.5 transition-all" />
-                  </Link>
+                  {[
+                    { name: "SkipQ", logo: skipqLogo, dot: "bg-green-500" },
+                    { name: "Bill Buddy", logo: billbuddyLogo, dot: "bg-green-500" },
+                    { name: "Clario", logo: clarioLogo, dot: "bg-amber-500" },
+                  ].map((p) => (
+                    <Link
+                      key={p.name}
+                      to="/products"
+                      className="flex items-center justify-between p-3 bg-gray-50 hover:bg-gray-100 rounded transition-colors group"
+                    >
+                      <div className="flex items-center gap-3">
+                        <img src={p.logo} alt={p.name} className="w-8 h-8 rounded-lg object-cover" />
+                        <span className="text-sm font-medium text-gray-800">{p.name}</span>
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <span className={`w-1.5 h-1.5 rounded-full ${p.dot}`} />
+                        <ArrowRight className="w-4 h-4 text-gray-400 group-hover:text-gray-800 group-hover:translate-x-0.5 transition-all" />
+                      </div>
+                    </Link>
+                  ))}
                 </div>
                 <Button
                   className="w-full bg-gray-900 text-white hover:bg-gray-800 rounded font-semibold"
@@ -183,6 +192,90 @@ const Home = () => {
                 Learn more <ArrowRight className="w-3.5 h-3.5" />
               </Link>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Our Products Section */}
+      <section className="py-20 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
+          <div className="flex items-end justify-between mb-12">
+            <div>
+              <p className="text-xs font-semibold uppercase tracking-widest text-primary mb-3 font-inter">
+                Our Products
+              </p>
+              <h2 className="text-3xl md:text-4xl font-extrabold font-lucidia tracking-[-0.02em] text-gray-900">
+                Built by us, used by real people
+              </h2>
+            </div>
+            <Link
+              to="/products"
+              className="hidden sm:inline-flex items-center gap-1.5 text-sm font-semibold text-gray-900 hover:gap-2.5 transition-all font-inter"
+            >
+              See all products <ArrowRight className="w-4 h-4" />
+            </Link>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-px bg-gray-200">
+            {[
+              {
+                name: "SkipQ",
+                tagline: "Skip the queue. Order ahead at your campus.",
+                logo: skipqLogo,
+                status: "Live on Play Store",
+                dot: "bg-green-500",
+                badge: "bg-green-50 text-green-700",
+                accent: "#F97316",
+              },
+              {
+                name: "Bill Buddy",
+                tagline: "A smart companion for bills, budgets, and money tracking.",
+                logo: billbuddyLogo,
+                status: "Live on Play Store",
+                dot: "bg-green-500",
+                badge: "bg-green-50 text-green-700",
+                accent: "#3B82F6",
+              },
+              {
+                name: "Clario",
+                tagline: "Clarity for every USCIS case update.",
+                logo: clarioLogo,
+                status: "Releasing Soon",
+                dot: "bg-amber-500",
+                badge: "bg-amber-50 text-amber-700",
+                accent: "#0EA5E9",
+              },
+            ].map((p) => (
+              <Link
+                key={p.name}
+                to="/products"
+                className="bg-white p-8 flex flex-col gap-4 group hover:bg-gray-50 transition-colors"
+              >
+                <div className="flex items-start justify-between">
+                  <img src={p.logo} alt={p.name} className="w-14 h-14 rounded-2xl object-cover shadow-sm" />
+                  <span className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md text-xs font-medium uppercase tracking-wide ${p.badge}`}>
+                    <span className={`w-1.5 h-1.5 rounded-full inline-block ${p.dot}`} />
+                    {p.status}
+                  </span>
+                </div>
+                <div>
+                  <h3 className="text-xl font-bold font-lucidia tracking-tight text-gray-900 mb-1">{p.name}</h3>
+                  <p className="text-sm text-gray-500 font-inter">{p.tagline}</p>
+                </div>
+                <span className="mt-auto inline-flex items-center gap-1 text-sm font-semibold text-gray-900 group-hover:gap-2 transition-all font-inter">
+                  Learn more <ArrowRight className="w-3.5 h-3.5" />
+                </span>
+              </Link>
+            ))}
+          </div>
+
+          <div className="mt-6 sm:hidden text-center">
+            <Link
+              to="/products"
+              className="inline-flex items-center gap-1.5 text-sm font-semibold text-gray-900 font-inter"
+            >
+              See all products <ArrowRight className="w-4 h-4" />
+            </Link>
           </div>
         </div>
       </section>
