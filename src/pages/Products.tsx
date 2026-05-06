@@ -104,63 +104,61 @@ const Products = () => {
         </div>
       </section>
 
-      {/* Products Grid — Clean white editorial */}
-      <section className="py-4 bg-white">
-        <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-px bg-gray-200">
-            {products.map((product) => (
-              <div key={product.name} className="bg-white p-8 lg:p-12 space-y-6">
-                {/* Logo & Badge */}
-                <div className="flex items-start justify-between">
-                  <img
-                    src={product.logo}
-                    alt={`${product.name} logo`}
-                    className="w-16 h-16 rounded-2xl object-cover shadow-sm"
-                  />
-                  <span className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md text-xs font-medium uppercase tracking-wide ${statusStyles[product.statusColor].container}`}>
-                    <span className={`w-1.5 h-1.5 rounded-full inline-block ${statusStyles[product.statusColor].dot}`} />
-                    {product.status}
-                  </span>
-                </div>
-
-                {/* Title & Tagline */}
-                <div>
-                  <h3 className="text-2xl font-bold font-lucidia tracking-tight text-gray-900 mb-2">
-                    {product.name}
-                  </h3>
-                  <p className="text-sm font-medium text-gray-500 font-inter">
-                    {product.tagline}
-                  </p>
-                </div>
-
-                {/* Description */}
-                <p className="text-base text-gray-600 leading-relaxed font-inter">
-                  {product.description}
-                </p>
-
-                {/* Features */}
-                <ul className="space-y-2">
-                  {product.features.map((feature, idx) => (
-                    <li key={idx} className="flex items-start gap-2 text-sm text-gray-600 font-inter">
-                      <ArrowRight className="w-4 h-4 mt-0.5 text-gray-400 flex-shrink-0" />
-                      <span>{feature}</span>
-                    </li>
-                  ))}
-                </ul>
-
-                {/* CTA */}
-                <a
-                  href={product.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 w-full justify-center bg-gray-900 text-white hover:bg-gray-800 rounded px-4 py-2.5 text-sm font-semibold transition-colors"
-                >
-                  {product.cta}
-                  <ExternalLink className="w-4 h-4" />
-                </a>
+      {/* Products Grid — edge-to-edge, full-height cards */}
+      <section className="bg-white">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-px bg-gray-200">
+          {products.map((product) => (
+            <div key={product.name} className="bg-white p-10 xl:p-14 flex flex-col min-h-[520px]">
+              {/* Logo & Badge */}
+              <div className="flex items-start justify-between mb-8">
+                <img
+                  src={product.logo}
+                  alt={`${product.name} logo`}
+                  className="w-20 h-20 rounded-2xl object-cover shadow-sm"
+                />
+                <span className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md text-xs font-medium uppercase tracking-wide ${statusStyles[product.statusColor].container}`}>
+                  <span className={`w-1.5 h-1.5 rounded-full inline-block ${statusStyles[product.statusColor].dot}`} />
+                  {product.status}
+                </span>
               </div>
-            ))}
-          </div>
+
+              {/* Title & Tagline */}
+              <div className="mb-5">
+                <h3 className="text-2xl font-bold font-lucidia tracking-tight text-gray-900 mb-2">
+                  {product.name}
+                </h3>
+                <p className="text-sm font-medium text-gray-500 font-inter">
+                  {product.tagline}
+                </p>
+              </div>
+
+              {/* Description */}
+              <p className="text-base text-gray-600 leading-relaxed font-inter mb-6">
+                {product.description}
+              </p>
+
+              {/* Features */}
+              <ul className="space-y-3 mb-8">
+                {product.features.map((feature, idx) => (
+                  <li key={idx} className="flex items-start gap-2 text-sm text-gray-600 font-inter">
+                    <ArrowRight className="w-4 h-4 mt-0.5 text-gray-400 flex-shrink-0" />
+                    <span>{feature}</span>
+                  </li>
+                ))}
+              </ul>
+
+              {/* CTA — pinned to bottom */}
+              <a
+                href={product.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-auto inline-flex items-center gap-2 w-full justify-center bg-gray-900 text-white hover:bg-gray-800 rounded px-4 py-3 text-sm font-semibold transition-colors"
+              >
+                {product.cta}
+                <ExternalLink className="w-4 h-4" />
+              </a>
+            </div>
+          ))}
         </div>
       </section>
 
