@@ -1,3 +1,4 @@
+import { useEffect, useRef } from "react";
 import { ArrowRight, ExternalLink } from "lucide-react";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
@@ -20,6 +21,15 @@ const statusStyles: Record<string, { container: string; dot: string; text: strin
 };
 
 const Products = () => {
+  const productsRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      productsRef.current?.scrollIntoView({ behavior: "smooth" });
+    }, 100);
+    return () => clearTimeout(timer);
+  }, []);
+
   const products = [
     {
       name: "SkipQ",
@@ -105,7 +115,7 @@ const Products = () => {
       </section>
 
       {/* Products Grid — edge-to-edge, full-height cards */}
-      <section className="bg-white">
+      <section ref={productsRef} className="bg-white">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-px bg-gray-200">
           {products.map((product) => (
             <div key={product.name} className="bg-white p-10 xl:p-14 flex flex-col min-h-[520px]">
