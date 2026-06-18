@@ -30,6 +30,8 @@ const apps = [
     items: [
       { label: "Privacy Policy", path: "/privacy/skipq/policy" },
       { label: "Delete Account", path: "/privacy/skipq/delete-account" },
+      { label: "Terms & Conditions", path: "/privacy/skipq/terms" },
+      { label: "Refund Policy", path: "/privacy/skipq/refund" },
     ],
   },
 ];
