@@ -29,6 +29,20 @@ const policies = [
     path: "/privacy/skipq/policy",
     gradient: "from-green-500 to-emerald-400",
   },
+  {
+    label: "SkipQ Terms & Conditions",
+    description:
+      "Terms of service for the SkipQ platform. Covers eligibility, orders, payments, platform fee, and governing law.",
+    path: "/privacy/skipq/terms",
+    gradient: "from-orange-500 to-amber-400",
+  },
+  {
+    label: "SkipQ Refund & Cancellation Policy",
+    description:
+      "When you can cancel an order, refund eligibility, platform fee policy, and refund timelines via Razorpay.",
+    path: "/privacy/skipq/refund",
+    gradient: "from-rose-500 to-orange-400",
+  },
 ];
 
 export default function PrivacyLanding() {

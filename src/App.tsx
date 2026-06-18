@@ -18,6 +18,8 @@ import SkipQVendorPrivacyPolicy from "./privacy-policies/SkipQVendor";
 import SkipQCustomerPrivacyPolicy from "./privacy-policies/SkipQCustomer";
 import SkipQVendorDeleteAccount from "./privacy-policies/SkipQVendorDeleteAccount";
 import SkipQCustomerDeleteAccount from "./privacy-policies/SkipQCustomerDeleteAccount";
+import SkipQTerms from "./privacy-policies/SkipQTerms";
+import SkipQRefundPolicy from "./privacy-policies/SkipQRefundPolicy";
 
 const queryClient = new QueryClient();
 
@@ -47,6 +49,8 @@ const App = () => (
             <Route path="skipq" element={<Navigate to="/privacy/skipq/policy" replace />} />
             <Route path="skipq/policy" element={<SkipQCustomerPrivacyPolicy />} />
             <Route path="skipq/delete-account" element={<SkipQCustomerDeleteAccount />} />
+            <Route path="skipq/terms" element={<SkipQTerms />} />
+            <Route path="skipq/refund" element={<SkipQRefundPolicy />} />
           </Route>
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
